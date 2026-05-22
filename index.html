@@ -5,92 +5,503 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rogerio Celestino - Software Engineer</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        body {
-            font-family: sans-serif;
-            line-height: 1.6;
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0b0f19 0%, #1e293b 100%);
+            --card-bg: rgba(30, 41, 59, 0.45);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #3b82f6 100%);
+            --accent-color: #6366f1;
+            --accent-hover: #38bdf8;
+            --accent-glow: rgba(99, 102, 241, 0.15);
+            --nav-bg: rgba(11, 15, 25, 0.85);
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --transition-speed: 0.3s;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0f19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            background: #f4f4f4;
-            color: #333;
         }
 
-        header {
-            background: #333;
-            color: #fff;
-            padding: 1rem 0;
-            text-align: center;
+        html {
+            scroll-behavior: smooth;
         }
 
+        body {
+            font-family: var(--font-body);
+            background: #0b0f19;
+            background-image: var(--bg-gradient);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Nav menu */
         nav {
-            background: #444;
-            color: #fff;
-            padding: 0.5rem;
-            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background: var(--nav-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--card-border);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
         nav a {
-            color: #fff;
-            margin: 0 15px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 8px;
             text-decoration: none;
+            transition: all var(--transition-speed) ease;
+        }
+
+        nav a:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Header / Hero Section */
+        header {
+            padding: 140px 20px 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            border-radius: 22px;
+            background: var(--accent-gradient);
+            color: #fff;
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
+            }
+            50% {
+                transform: scale(1.04);
+                box-shadow: 0 12px 35px rgba(99, 102, 241, 0.6);
+            }
+        }
+
+        header h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 6vw, 4.2rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        header .gradient-text {
+            background: linear-gradient(135deg, #ffffff 40%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin: 0 auto 30px auto;
+            font-weight: 300;
+        }
+
+        header .hero-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: 12px;
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all var(--transition-speed) ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            border: 1px solid var(--card-border);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Main structure */
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px 100px 20px;
         }
 
         section {
-            padding: 20px;
-            margin: 0 20px;
-            background: #fff;
-            border-bottom: 1px solid #ddd;
+            padding: 60px 0;
+            scroll-margin-top: 80px;
+            border-bottom: 1px solid var(--card-border);
         }
 
-        h1,
-        h2,
-        h3 {
-            color: #333;
+        section:last-of-type {
+            border-bottom: none;
         }
 
+        section h2 {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 35px;
+            position: relative;
+            display: inline-block;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+        }
+
+        /* Cards styles */
+        .job,
+        .education-entry,
+        .publication {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            padding: 28px;
+            margin-bottom: 25px;
+            transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .job:hover,
+        .education-entry:hover,
+        .publication:hover {
+            transform: translateY(-4px);
+            border-color: rgba(99, 102, 241, 0.35);
+            box-shadow: 0 10px 30px var(--accent-glow);
+            background: rgba(30, 41, 59, 0.55);
+        }
+
+        .job h3,
+        .education-entry h3,
+        .publication h3 {
+            font-family: var(--font-heading);
+            font-size: 19px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .job h3 a,
+        .education-entry h3 a,
+        .publication h3 a {
+            color: var(--accent-hover);
+            text-decoration: none;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .job h3 a:hover,
+        .education-entry h3 a:hover,
+        .publication h3 a:hover {
+            color: #60a5fa;
+        }
+
+        .date-badge {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-family: var(--font-body);
+        }
+
+        /* Description details */
+        .job p,
+        .education-entry p,
+        .publication p {
+            font-size: 14.5px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .job p i {
+            display: none; /* Hide old italic dates since we have date-badges */
+        }
+
+        .job-details {
+            white-space: pre-wrap;
+            margin-top: 8px;
+            color: var(--text-secondary);
+        }
+
+        /* Skills grid */
         .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            padding: 28px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-category h3 {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        /* Modern Tags */
+        .skill-category ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-category.tags ul li {
+            font-size: 13px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            padding: 6px 12px;
+            border-radius: 8px;
+            color: var(--text-secondary);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .skill-category.tags ul li:hover {
+            background: rgba(99, 102, 241, 0.12);
+            border-color: rgba(99, 102, 241, 0.3);
+            color: var(--text-primary);
+        }
+
+        /* List structure for certifications & languages */
+        .skill-category.list ul {
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .skill-category.list ul li {
+            width: 100%;
+            font-size: 14px;
+            display: flex;
+            align-items: flex-start;
+            line-height: 1.5;
+        }
+
+        .skill-category.list ul li::before {
+            content: '\f00c'; /* FontAwesome check */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--accent-hover);
+            margin-right: 12px;
+            font-size: 12px;
+            display: inline-block;
+            margin-top: 3px;
+        }
+
+        .skill-category.list ul li a {
+            color: var(--accent-hover);
+            text-decoration: none;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .skill-category.list ul li a:hover {
+            color: #60a5fa;
+            text-decoration: underline;
+        }
+
+        .skill-category.list.lang ul li::before {
+            content: '\f1ab'; /* FontAwesome language icon */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+        }
+
+        /* Contact card styles */
+        .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
         }
 
-        .skill-category {
-            background: #f9f9f9;
-            padding: 15px;
-            border-radius: 5px;
+        .contact-item {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 22px;
+            text-align: center;
+            transition: all var(--transition-speed) ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .job,
-        .education-entry {
-            margin-bottom: 20px;
+        .contact-item:hover {
+            background: rgba(30, 41, 59, 0.6);
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 6px 20px var(--accent-glow);
         }
 
+        .contact-item i {
+            font-size: 24px;
+            color: var(--accent-hover);
+            margin-bottom: 12px;
+        }
+
+        .contact-item strong {
+            display: block;
+            color: var(--text-primary);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+
+        .contact-item a, .contact-item span {
+            color: var(--text-secondary);
+            font-size: 14px;
+            text-decoration: none;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Footer */
         footer {
             text-align: center;
-            padding: 20px;
-            background: #333;
-            color: #fff;
+            padding: 40px 20px;
+            background: #070a10;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 13.5px;
         }
 
-        .job h3 a, .education-entry h3 a {
-            color: #0275d8;
-            text-decoration: none;
-        }
-
-        .job h3 a:hover, .education-entry h3 a:hover {
-            text-decoration: underline;
+        /* Responsive spacing */
+        @media (max-width: 768px) {
+            header {
+                padding-top: 120px;
+            }
+            .job h3, .education-entry h3, .publication h3 {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .date-badge {
+                margin-top: 4px;
+            }
+            nav {
+                padding: 10px;
+            }
+            nav a {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
         }
     </style>
 </head>
 
 <body>
-
-    <header>
-        <section id="home">
-            <h1>Rogerio Celestino</h1>
-            <p>Software Engineer | MSc | iOS | Android | R&D | ML & AI</p>
-        </section>
-    </header>
 
     <nav>
         <a href="#home">Home</a>
@@ -98,302 +509,489 @@
         <a href="#education">Education</a>
         <a href="#skills">Skills</a>
         <a href="#work">Work/Projects</a>
+        <a href="#publications">Publications</a>
         <a href="#contact">Contact</a>
     </nav>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>I'm a highly motivated and results-oriented professional with 20+ years of experience in software development
-            and a strong academic foundation in Computing. Holding a degree in Information Systems, a specialization in
-            Software Testing, and a Master's in Software Engineering, I am currently expanding my expertise through a
-            postgraduate program in Al Engineering at the Data Science Academy.</p>
-        <p>Throughout my career, I have cultivated a broad skillset across diverse software domains, including web,
-            back-end, embedded systems, mobile, university teaching, and R&D. Notably, I possess over a decade of
-            in-depth experience in mobile development for both iOS and Android platforms. In my recent role as a
-            Technical Coordinator, I successfully led the growth of development teams and spearheaded the evolution of
-            mobile application projects, consistently prioritizing scalability and reliability.</p>
-        <p>My current passion lies at the intersection of Artificial Intelligence and Data Science, areas in which I am
-            actively pursuing dedicated study. I am confident that my robust academic background, coupled with my
-            inherent curiosity, persistence, and extensive software engineering experience, provides a strong and unique
-            foundation for me to make significant contributions.</p>
-    </section>
+    <header id="home">
+        <div class="logo-badge">RC</div>
+        <h1><span class="gradient-text">Rogerio Celestino</span></h1>
+        <p>Software Engineer Specialist | MSc | iOS | Android | R&D | ML & AI</p>
+        <div class="hero-links">
+            <a href="#contact" class="btn btn-primary"><i class="fa-solid fa-envelope"></i> Contact Me</a>
+            <a href="http://www.linkedin.com/in/rogeriocs" target="_blank" class="btn btn-secondary"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+            <a href="https://github.com/rogerioc" target="_blank" class="btn btn-secondary"><i class="fa-brands fa-github"></i> GitHub</a>
+        </div>
+    </header>
 
-    <section id="education">
-        <h2>Education</h2>
-        <div class="education-entry">
-            <h3><a href="https://www.datascienceacademy.com.br" target="_blank">Data Science Academy</a></h3>
-            <p>Postgraduate Program in Artificial Intelligence Engineering, Computer Science (2025-2025)</p>
-        </div>
-        <div class="education-entry">
-            <h3><a href="https://www.pucminas.br" target="_blank">Pontifícia Universidade Católica de Minas Gerais</a></h3>
-            <p>Master of Science (MS), Mobile Software Engineer, Sofware Product Line, Feature-Oriented Programming,
-                Software Components (2007 - 2009)</p>
-        </div>
-        <div class="education-entry">
-            <h3><a href="https://www.ufpe.br" target="_blank">Universidade Federal de Pernambuco</a></h3>
-            <p>Bachelor of Science (BS), Software Test Engineer (2006-2006)</p>
-        </div>
-        <div class="education-entry">
-            <h3><a href="https://www.pucminas.br" target="_blank">Pontifícia Universidade Católica de Minas Gerais</a></h3>
-            <p>Bachelor's degree, Sistemas de informação (2002-2005)</p>
-        </div>
-        <div class="education-entry">
-            <h3><a href="https://www.cotemig.com.br" target="_blank">COTEMIG - Colégio e Faculdade</a></h3>
-            <p>Technical Course - High School, Information Technology (1997-1999)</p>
-        </div>
-    </section>
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I'm a highly motivated and results-oriented professional with 20+ years of experience in software development and a strong academic foundation in Computing. Holding a degree in Information Systems, a specialization in Software Testing, and a Master's in Software Engineering, I am currently expanding my expertise through a postgraduate program in AI Engineering at the Data Science Academy.</p>
+            <p style="margin-top: 15px;">Throughout my career, I have cultivated a broad skillset across diverse software domains, including web, back-end, embedded systems, mobile, university teaching, and R&D. Notably, I possess over a decade of in-depth experience in mobile development for both iOS and Android platforms. In my recent role as a Technical Coordinator, I successfully led the growth of development teams and spearheaded the evolution of mobile application projects, consistently prioritizing scalability and reliability.</p>
+            <p style="margin-top: 15px;">My current passion lies at the intersection of Artificial Intelligence and Data Science, areas in which I am actively pursuing dedicated study. I am confident that my robust academic background, coupled with my inherent curiosity, persistence, and extensive software engineering experience, provides a strong and unique foundation for me to make significant contributions.</p>
+        </section>
 
-    <section id="skills">
-        <h2>Skills</h2>
-        <div class="skills-container">
-            <div class="skill-category">
-                <div class="skill-category">
+        <section id="education">
+            <h2>Education</h2>
+            
+            <div class="education-entry">
+                <h3>
+                    <span><a href="https://www.datascienceacademy.com.br" target="_blank">Data Science Academy</a></span>
+                    <span class="date-badge">2025 - 2025</span>
+                </h3>
+                <p>Postgraduate Program in Artificial Intelligence Engineering, Computer Science</p>
+            </div>
+            
+            <div class="education-entry">
+                <h3>
+                    <span><a href="https://www.pucminas.br/pos/informatica/Paginas/default.aspx" target="_blank">Pontifícia Universidade Católica de Minas Gerais</a></span>
+                    <span class="date-badge">2007 - 2009</span>
+                </h3>
+                <p>Master of Science (MS), Mobile Software Engineer, Software Product Line, Feature-Oriented Programming, Software Components</p>
+            </div>
+            
+            <div class="education-entry">
+                <h3>
+                    <span><a href="https://www.ufpe.br" target="_blank">Universidade Federal de Pernambuco</a></span>
+                    <span class="date-badge">2006 - 2006</span>
+                </h3>
+                <p>Bachelor of Science (BS), Software Test Engineer</p>
+            </div>
+            
+            <div class="education-entry">
+                <h3>
+                    <span><a href="https://www.pucminas.br" target="_blank">Pontifícia Universidade Católica de Minas Gerais</a></span>
+                    <span class="date-badge">2002 - 2005</span>
+                </h3>
+                <p>Bachelor's degree, Sistemas de informação</p>
+            </div>
+            
+            <div class="education-entry">
+                <h3>
+                    <span><a href="https://www.cotemig.com.br" target="_blank">COTEMIG - Colégio e Faculdade</a></span>
+                    <span class="date-badge">1997 - 1999</span>
+                </h3>
+                <p>Technical Course - High School, Information Technology</p>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Skills & Qualifications</h2>
+            <div class="skills-container">
+                <div class="skill-category tags">
                     <h3>Top Skills</h3>
                     <ul>
                         <li>Mobile Solutions Architecture</li>
                         <li>Mobile Development (iOS & Android)</li>
                         <li>Research & Development (R&D)</li>
-                        <li>Team Leadership / Tech Lead</li>
+                        <li>Team Leadership</li>
+                        <li>Tech Lead</li>
                         <li>CI/CD (Bitrise, Fastlane)</li>
-                        <li>Software Quality & Maintenance</li>
-                        <li>AWS & Firebase</li>
-                        <li>Modularization & Clean Architecture</li>
-                        <li>Artificial Intelligence & Machine Learning</li>
-                        <li>Prompt Engineer</li>
+                        <li>Software Quality</li>
+                        <li>AWS</li>
+                        <li>Firebase</li>
+                        <li>Modularization</li>
+                        <li>Clean Architecture</li>
+                        <li>Artificial Intelligence</li>
+                        <li>Machine Learning</li>
+                        <li>Prompt Engineering</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category list">
+                    <h3>Certifications</h3>
+                    <ul>
+                        <li><a href="https://mycourse.app/eRE9HiuyE8Z2tgkxZ" target="_blank">Deep Learning for Artificial Intelligence Applications with Python and C++</a> (Data Science Academy)</li>
+                        <li><a href="https://mycourse.app/2X43LSTQWI7uDNnum" target="_blank">IA Generativa e LLMs Para Processamento de Linguagem Natural</a> (Data Science Academy)</li>
+                        <li>BootCamp de IA Generativa da AWS (Insper)</li>
+                        <li><a href="https://www.linkedin.com/learning/certificates/70036de65a4272388433b05afe3795069ba94298066371ab17138c7e7877353b" target="_blank">Introduction to Deep Learning with OpenCV</a> (LinkedIn Learning)</li>
+                        <li><a href="https://mycourse.app/Db5s4Uc3STKxNuhxx" target="_blank">Fundamentos de Data Science e Inteligência Artificial</a> (Data Science Academy)</li>
+                        <li>Inteligência Artificial Para Visão Computacional</li>
+                        <li><a href="https://www.udemy.com/certificate/UC-d691e7bd-55c4-486a-bac1-6dbc037108db/?utm_campaign=email&utm_medium=email&utm_source=sendgrid.com" target="_blank">Machine Learning A-Z: AI, Python & R + ChatGPT Prize [2025]</a> (Udemy)</li>
+                        <li><a href="https://mycourse.app/DLo1wRNTmmfV4JoSs" target="_blank">Fundamentos de Engenharia de Dados</a> (Data Science Academy)</li>
+                        <li>Inteligência Emocional (Sebrae)</li>
+                        <li><a href="https://www.conqueronline.com.br/certificates/5fa9337a-9fc7-4e14-b198-0e35ea915e5a" target="_blank">Formando Campeões: Liderança F.C.</a> (Escola Conquer)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category list lang">
+                    <h3>Languages</h3>
+                    <ul>
+                        <li>English (Professional Working Proficiency)</li>
+                        <li>Portuguese (Native or Bilingual Proficiency)</li>
                     </ul>
                 </div>
             </div>
-            <div class="skill-category">
-                <h3>Languages</h3>
-                <ul>
-                    <li>English (Professional Working)</li>
-                    <li>Portuguese (Native or Bilingual)</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3>Certifications</h3>
-                <ul>
-                    <li>Deep Learning for Artificial Intelligence Applications with Python and C++</li>
-                    <li>Inteligência Emocional</li>
-                    <li>Inteligência Artificial Para Visão Computacional</li>
-                    <li>IA Generativa e LLMs Para Processamento de Linguagem Natural</li>
-                    <li>Machine Learning A-Z: Al, Python & R + ChatGPT Prize [2025]</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="work">
-        <h2>Work Experience</h2>
-        <div class="job">
-            <h3>Software Engineer Specialist - Mobile at <a href="https://inter.co/" target="_blank">Inter</a></h3>
-            <p><i>2025 - Present</i></p>
-            <p>- Mobile Solutions Architecture, Mobile Development, Research & Development, Contributing to continuous
-                process improvement (iOS, Android) - SDUI, SDUI SDK - Tech Lead</p>
-        </div>
-        <div class="job">
-            <h3>Mobile Engineer/Tech Lead at <a href="https://www.getninjas.com.br" target="_blank">GetNinjas</a></h3>
-            <p><i>2024 - 2025</i></p>
-            <p>Main responsibilities: - Mobile Solutions Architecture, Mobile Development, Research & Development,
-                Contributing to continuous process improvement, Reliability and scaling, Mobile project evolution, AWS,
-                Firebase, - CMS (SalesForce), MMP (Singular, AppsFlyer) , BFF (Back-end for FrontEnd), Mobile strategic
-                planning decisions - Tech lead and Coordination, Creative and solutions problems at company, Lead squad
-            </p>
-        </div>
-        <div class="job">
-            <h3>Mobile Engineer at <a href="https://www.getninjas.com.br" target="_blank">GetNinjas</a></h3>
-            <p><i>2022 - 2024</i></p>
-            <p>Main responsibilities: - Mobile Solutions Architecture, Mobile Development (iOS), Research & Development,
-                Contributing to continuous process improvement, Reliability and scaling, Swift, VIP , Clean
-                Architecture, S.O.L.I.D, Modularization, ViewCode, Unit Tests, Fastlane, CI/CD (Bitrise),CMS
-                (SalesForce), MMP (Singular, AppsFlyer), CocoaPods, Mobile project evolution,Support team growth, iOS
-                strategic planning decisions, AWS, Firebase, BFF (Back-end for FrontEnd) - Working with new features and
-                improvements at iOS Apps. - Helping and Coordinate iOS team to improve code and iOS architecture. -
-                Creative and solutions problems at company.</p>
-        </div>
-        <div class="job">
-            <h3>Mobile Specialist at <a href="https://www.zup.com.br" target="_blank">Zup Innovation</a></h3>
-            <p><i>2021 - 2022</i></p>
-            <p>Main responsibilities: - Mobile Solutions Architecture (Android & iOS), Mobile Development (Android/
-                iOS), Research & Development, Delivering clean, well-designed code in small functional increments. -
-                Making key implementation decisions, and describing your rationale, Contributing to continuous process
-                improvement, Detecting and correcting creeping technical debt</p>
-        </div>
-        <div class="job">
-            <h3>iOS Specialist at <a href="https://www.warren.com.br" target="_blank">Warren Brasil</a></h3>
-            <p><i>2020 - 2021</i></p>
-            <p>Main responsibilities and knowledge: - Maintenance, keeping quality Software and new features - iOS
-                Development - Swift, SwiftUI, MVVM, TCA (The Composable Architecture) - Unit Tests - Scrum - Fastlance,
-                CI (Bitrise)</p>
-        </div>
-        <div class="job">
-            <h3>Mobile Solutions Architect at <a href="https://inter.co/" target="_blank">Inter</a></h3>
-            <p><i>2019 - 2020</i></p>
-            <p>Main responsibilities: - Tech Lead iOS, Mobile Solutions Architecture (Android & iOS - Kotlin/Java ,
-                Swift/Objective-C, Back-end), Mobile Development (Android/ iOS), CI/CD - Bitrise, Fastlane, Research &
-                Development, Responsable for app (Inter Empresas), Maintenance and keeping quality Software - Created a
-                little framework using webview to control both native platforms and web pages on apps to help fast
-                development of some features. - Integrations between two big iOS apps on Inter. - Worked on PIX: The new
-                instant payment system from Central Bank of Brazil</p>
-        </div>
-        <div class="job">
-            <h3>Senior Mobile Software Engineer at <a href="https://www.maxmilhas.com.br" target="_blank">MaxMilhas</a></h3>
-            <p><i>2018 - 2019</i></p>
-            <p>Main responsibilities: - React Native (Maintenance), Android (Java, Kotlin) and iOS (Objectiver-C, Swift)
-                development - Mobile Architecture (MVVM, MVVM-C, Module Architecture) - Reactive programming (RxJava,
-                RxSwift) - R&D - In less six month at work a could substitute my tech leader and your vacation - Helping
-                teacher new mobile developers or less inexperienced In this time the app represents more than 20% of the
-                tickets sales. </p>
-        </div>
-        <div class="job">
-            <h3>Postgraduate Professor at <a href="https://www.pucminas.br" target="_blank">Pontifícia Universidade Católica de Minas Gerais</a></h3>
-            <p><i>2018</i></p>
-            <p>Professor Revenue Models and Metrics for Performance Analysis Main responsibilities: - Teaching about
-                Mobile apps price and Mobile apps KPI's </p>
-        </div>
-        <div class="job">
-            <h3>Mobile Tech Lead at <a href="https://sambatech.com" target="_blank">Samba Tech</a></h3>
-            <p><i>2016 - 2018</i></p>
-            <p>I gave to Sambatech the support to create a mobile team that they haven't had before. I helped them to
-                choose the candidates and create a mobile developer process. Manager team, feedbacks, 1:1 and PDI. Main
-                responsibilities: - Responsible for the mobile team, Technical lead, scrum master, Mobile architect
-                (MVVM, MVP, Clean Architecture), Android and iOS senior developer, Helping teacher new mobile developers
-                or less inexperienced, Sometimes back-end and front-end developer. Scrum Master, Mobile OTT, VAS</p>
-        </div>
-        <div class="job">
-            <h3>Postgraduate Professor at <a href="https://www.pucminas.br" target="_blank">PUC Minas</a></h3>
-            <p><i>2016</i></p>
-            <p>Professor Mobile Architecture Main responsibilities: - Teaching about mobile architecture to postgraduate
-                education </p>
-        </div>
-        <div class="job">
-            <h3>Partner at PickMeApp</h3>
-            <p><i>2015 - 2016</i></p>
-            <p>- Partner - Team coordinator - Tech Lead - Back-end architecture and mobile architecture. (Java, Swift,
-                PHP/Laravel, , Android e iOS)</p>
-        </div>
-        <div class="job">
-            <h3>Professor at <a href="https://unibh.br" target="_blank">UniBH - Centro Universitário de Belo Horizonte</a></h3>
-            <p><i>2014 - 2015</i></p>
-            <p>Teaching Mobile Development and Mobile Interface Design to graduate education. </p>
-        </div>
-        <div class="job">
-            <h3>Researcher and Developer at Netbee - Intelligent Transportation System</h3>
-            <p><i>2014</i></p>
-            <p>I worked like researcher from CNPq SET-F to ITS services (Intelligent Transport System) Main
-                responsibilities: - R&D - Mobile app (Androis,iOS) - Software Architecture - JavaEE , C and Firmware
-                development. - Implementation and study the MQTT protocol </p>
-        </div>
-        <div class="job">
-            <h3>Senior Mobile Software Engineer at Pontomobi</h3>
-            <p><i>2013 - 2014</i></p>
-            <p>Development mobile solutions for iOS (iPhone and iPad) and sometimes helping the Android team. Mobile
-                Architecture and Research. Expertise: iOS</p>
-        </div>
-        <div class="job">
-            <h3>Software Engineer at <a href="https://avenuecode.com" target="_blank">Avenue Code</a></h3>
-            <p><i>2013</i></p>
-            <p>Android, Java EE, Hibernate, Spring, Scrum.</p>
-        </div>
-        <div class="job">
-            <h3>Mobile Software Engineer at Lalubema Sistemas Ltda.</h3>
-            <p><i>2012 - 2013</i></p>
-            <p>Development mobile solutions for iOS (iPhone, iPad), Android. Development Applications, Games (Socials,
-                advertising and etc), R&D. Development in cross-platform technologies like Unity3d, HTML5. Mobile
-                Architecture . Expertise: Android</p>
-        </div>
-        <div class="job">
-            <h3>Cnpq - Researcher at <a href="https://remopt.com.br" target="_blank">RemOpt</a></h3>
-            <p><i>2011 - 2012</i></p>
-            <p>Notice MCT/CNPq nº 62/2009 - RHAE - Researcher in Company. Development C/C++, Java, 3GPP Protocols, ASN1
-                decoder, GPEH. Development software for Engineering and Telecommunications.</p>
-        </div>
-        <div class="job">
-            <h3>CNPq - Researcher at Aulaflex</h3>
-            <p><i>2011</i></p>
-            <p>Project - Construction and insertion of video-avatar interactive on virtual environments learning .
-                Notice MCT/CNPq nº 62/2009 - RHAE - Researcher in Company - Development using AS3, image processing,
-                motion detection.</p>
-        </div>
-        <div class="job">
-            <h3>Professor at <a href="https://cotemig.com.br" target="_blank">Cotemig</a></h3>
-            <p><i>2011</i></p>
-            <p>I created a intensive course about introduce to Android development.</p>
-        </div>
-        <div class="job">
-            <h3>Professor at <a href="https://www.cefetmg.br" target="_blank">CEFET-MG</a></h3>
-            <p><i>2010 - 2011</i></p>
-            <p>Graduate Teaching Computer Programming for Mechanical Engineering Data Structures and Algorithms 1 e 2
-                for Computing Engineering (C++)</p>
-        </div>
-        <div class="job">
-            <h3>Researcher at Ilusis Interactive Graphics</h3>
-            <p><i>2010</i></p>
-            <p>Development C/C++, Mobile (Android,JME), Network (Sockets,HTTP) , AS3 and Games</p>
-        </div>
-        <div class="job">
-            <h3>Senior Systems Analyst at <a href="https://stefanini.com" target="_blank">Stefanini</a></h3>
-            <p><i>2009 - 2010</i></p>
-            <p>C++ Developer, C++ Builder, Visual C++, Oracle and Java (JSF,HIBERNATE, SPRING).</p>
-        </div>
-        <div class="job">
-            <h3>Professor at Instituto Metodista Izabela Hendrix</h3>
-            <p><i>2009</i></p>
-            <p>Graduate Teaching 3D Programming (OpenGL/C++), Mobile Programming (JME) and Software Engineering.</p>
-        </div>
-        <div class="job">
-            <h3>Developer at <a href="https://tacom.com.br" target="_blank">TACOM Soluções em Mobilidade</a></h3>
-            <p><i>2008 - 2009</i></p>
-            <p>Development C/C++, System Analysts, Embedded Systems, OpenCV and R&D.</p>
-        </div>
-        <div class="job">
-            <h3>University Professor at <a href="https://www.pucminas.br" target="_blank">Pontifícia Universidade Católica de Minas Gerais</a></h3>
-            <p><i>2008 - 2009</i></p>
-            <p>Graduate Teaching Data Structures and Algorithms for Digital Games.</p>
-        </div>
-        <div class="job">
-            <h3>Software Development Engineer at i2 Software</h3>
-            <p><i>2007 - 2008</i></p>
-            <p>C++/C development Unix development Pearl development Palm Os development</p>
-        </div>
-        <div class="job">
-            <h3>Quality Assurance Support at <a href="https://www.cin.ufpe.br" target="_blank">Cin/Motorola - UFPE</a></h3>
-            <p><i>2006</i></p>
-            <p>Software Tester to Motorola phones.</p>
-        </div>
-        <div class="job">
-            <h3>Systems Analyst at i2 Software</h3>
-            <p><i>2005 - 2006</i></p>
-            <p>Development Palm OS C/C++, Delphi, UML.</p>
-        </div>
-        <div class="job">
-            <h3>Volunteer Teaching Assistant at <a href="https://www.pucminas.br" target="_blank">Pontifícia Universidade Católica de Minas Gerais</a></h3>
-            <p><i>2004</i></p>
-            <p>Architecture and Computer Organization I and Operating Systems (Linux, C, Assembly)</p>
-        </div>
-        <div class="job">
-            <h3>Teaching Assistant at <a href="https://www.pucminas.br" target="_blank">Pontifícia Universidade Católica de Minas Gerais</a></h3>
-            <p><i>2003</i></p>
-            <p>Data Structures and Algorithms. (C/C++)</p>
-        </div>
-        <div class="job">
-            <h3>Teaching Assistant at <a href="https://www.pucminas.br" target="_blank">Pontifícia Universidade Católica de Minas Gerais</a></h3>
-            <p><i>2003</i></p>
-            <p>Data Structures and Algorithms (C/C++))</p>
-        </div>
-    </section>
+        <section id="work">
+            <h2>Work Experience</h2>
+            
+            <div class="job">
+                <h3>
+                    <span>Software Engineer Specialist - Mobile at <a href="https://inter.co/" target="_blank">Inter</a></span>
+                    <span class="date-badge">June 2025 - Present</span>
+                </h3>
+                <div class="job-details">- Mobile Solutions Architecture, Mobile Development, Research & Development, Contributing to continuous process improvement (iOS, Android)
+- Architected and implemented the Top app as a derived product from the Inter SuperApp, isolating an optimized subset of 121+ internal modules through build flavors, selective dependency exclusion, and product variants delivering a lean, purpose-built app for the payment terminal segment with zero code duplication.
+- Modules, SDK, Kotlin, Swift, Server-Driven UI (SDUI), SDUI SDK
+- NFC, SoftPOS (Inter Pag)</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>Mobile Engineer / Tech Lead at <a href="https://www.getninjas.com.br" target="_blank">GetNinjas</a></span>
+                    <span class="date-badge">2024 - 2025</span>
+                </h3>
+                <div class="job-details">Main responsibilities:
+- Mobile Solutions Architecture, Mobile Development, Research & Development, Contributing to continuous process improvement, Reliability and scaling, Mobile project evolution, AWS, Firebase
+- CMS (SalesForce), MMP (Singular, AppsFlyer), BFF (Back-end for FrontEnd), Mobile strategic planning decisions
+- Tech lead and Coordination, Creative and solutions problems at company, Lead squad</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>Mobile Engineer at <a href="https://www.getninjas.com.br" target="_blank">GetNinjas</a></span>
+                    <span class="date-badge">2022 - 2024</span>
+                </h3>
+                <div class="job-details">Main responsibilities:
+- Mobile Solutions Architecture, Mobile Development (iOS), Research & Development, Contributing to continuous process improvement, Reliability and scaling, Swift, VIP, Clean Architecture, S.O.L.I.D, Modularization, ViewCode, Unit Tests, Fastlane, CI/CD (Bitrise), CMS (SalesForce), MMP (Singular, AppsFlyer), CocoaPods, Mobile project evolution, Support team growth, iOS strategic planning decisions, AWS, Firebase, BFF (Back-end for FrontEnd)
+- Working with new features and improvements at iOS Apps.
+- Helping and Coordinate iOS team to improve code and iOS architecture.
+- Creative and solutions problems at company.</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>Mobile Specialist at <a href="https://www.zup.com.br" target="_blank">Zup Innovation</a></span>
+                    <span class="date-badge">2021 - 2022</span>
+                </h3>
+                <div class="job-details">Main responsibilities:
+- Mobile Solutions Architecture (Android & iOS), Mobile Development (Android/ iOS), Research & Development, Delivering clean, well-designed code in small functional increments.
+- Making key implementation decisions, and describing your rationale, Contributing to continuous process improvement, Detecting and correcting creeping technical debt</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>iOS Specialist at <a href="https://www.warren.com.br" target="_blank">Warren Brasil</a></span>
+                    <span class="date-badge">2020 - 2021</span>
+                </h3>
+                <div class="job-details">Main responsibilities and knowledge:
+- Maintenance, keeping quality Software and new features
+- iOS Development - Swift, SwiftUI, MVVM, TCA (The Composable Architecture)
+- Unit Tests - Scrum - Fastlane, CI (Bitrise)</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>Mobile Solutions Architect at <a href="https://inter.co/" target="_blank">Inter</a></span>
+                    <span class="date-badge">2019 - 2020</span>
+                </h3>
+                <div class="job-details">Main responsibilities:
+- Tech Lead iOS, Mobile Solutions Architecture (Android & iOS - Kotlin/Java, Swift/Objective-C, Back-end), Mobile Development (Android/ iOS), CI/CD - Bitrise, Fastlane, Research & Development, Responsable for app (Inter Empresas), Maintenance and keeping quality Software
+- Created a little framework using webview to control both native platforms and web pages on apps to help fast development of some features.
+- Integrations between two big iOS apps on Inter.
+- Worked on PIX: The new instant payment system from Central Bank of Brazil</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>Senior Mobile Software Engineer at <a href="https://www.maxmilhas.com.br" target="_blank">MaxMilhas</a></span>
+                    <span class="date-badge">2018 - 2019</span>
+                </h3>
+                <div class="job-details">Main responsibilities:
+- React Native (Maintenance), Android (Java, Kotlin) and iOS (Objective-C, Swift) development
+- Mobile Architecture (MVVM, MVVM-C, Module Architecture)
+- Reactive programming (RxJava, RxSwift) - R&D
+- In less six month at work a could substitute my tech leader and your vacation
+- Helping teacher new mobile developers or less inexperienced
+In this time the app represents more than 20% of the tickets sales.</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>Postgraduate Professor at <a href="https://www.pucminas.br" target="_blank">Pontifícia Universidade Católica de Minas Gerais</a></span>
+                    <span class="date-badge">2018</span>
+                </h3>
+                <div class="job-details">Professor Revenue Models and Metrics for Performance Analysis
+Main responsibilities:
+- Teaching about Mobile apps price and Mobile apps KPI's</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>Mobile Tech Lead at <a href="https://sambatech.com" target="_blank">Samba Tech</a></span>
+                    <span class="date-badge">2016 - 2018</span>
+                </h3>
+                <div class="job-details">I gave to Sambatech the support to create a mobile team that they haven't had before. I helped them to choose the candidates and create a mobile developer process. Manager team, feedbacks, 1:1 and PDI.
+Main responsibilities:
+- Responsible for the mobile team, Technical lead, scrum master, Mobile architect (MVVM, MVP, Clean Architecture), Android and iOS senior developer, Helping teacher new mobile developers or less inexperienced, Sometimes back-end and front-end developer. Scrum Master, Mobile OTT, VAS</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>Postgraduate Professor at <a href="https://www.pucminas.br" target="_blank">PUC Minas</a></span>
+                    <span class="date-badge">2016</span>
+                </h3>
+                <div class="job-details">Professor Mobile Architecture
+Main responsibilities:
+- Teaching about mobile architecture to postgraduate education</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>Partner at PickMeApp</span>
+                    <span class="date-badge">2015 - 2016</span>
+                </h3>
+                <div class="job-details">- Partner - Team coordinator - Tech Lead - Back-end architecture and mobile architecture. (Java, Swift, PHP/Laravel, Android e iOS)</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>Professor at <a href="https://unibh.br" target="_blank">UniBH - Centro Universitário de Belo Horizonte</a></span>
+                    <span class="date-badge">2014 - 2015</span>
+                </h3>
+                <div class="job-details">Teaching Mobile Development and Mobile Interface Design to graduate education.</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>Researcher and Developer at Netbee - Intelligent Transportation System</span>
+                    <span class="date-badge">2014</span>
+                </h3>
+                <div class="job-details">I worked like researcher from CNPq SET-F to ITS services (Intelligent Transport System)
+Main responsibilities:
+- R&D - Mobile app (Android, iOS) - Software Architecture - JavaEE, C and Firmware development.
+- Implementation and study the MQTT protocol</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>Senior Mobile Software Engineer at Pontomobi</span>
+                    <span class="date-badge">2013 - 2014</span>
+                </h3>
+                <div class="job-details">Development mobile solutions for iOS (iPhone and iPad) and sometimes helping the Android team. Mobile Architecture and Research. Expertise: iOS</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>Software Engineer at <a href="https://avenuecode.com" target="_blank">Avenue Code</a></span>
+                    <span class="date-badge">2013</span>
+                </h3>
+                <div class="job-details">Android, Java EE, Hibernate, Spring, Scrum.</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>Mobile Software Engineer at Lalubema Sistemas Ltda.</span>
+                    <span class="date-badge">2012 - 2013</span>
+                </h3>
+                <div class="job-details">Development mobile solutions for iOS (iPhone, iPad), Android. Development Applications, Games (Socials, advertising and etc), R&D. Development in cross-platform technologies like Unity3d, HTML5. Mobile Architecture. Expertise: Android</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>Cnpq - Researcher at <a href="https://remopt.com.br" target="_blank">RemOpt</a></span>
+                    <span class="date-badge">2011 - 2012</span>
+                </h3>
+                <div class="job-details">Notice MCT/CNPq nº 62/2009 - RHAE - Researcher in Company. Development C/C++, Java, 3GPP Protocols, ASN1 decoder, GPEH. Development software for Engineering and Telecommunications.</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>CNPq - Researcher at Aulaflex</span>
+                    <span class="date-badge">2011</span>
+                </h3>
+                <div class="job-details">Project - Construction and insertion of video-avatar interactive on virtual environments learning. Notice MCT/CNPq nº 62/2009 - RHAE - Researcher in Company - Development using AS3, image processing, motion detection.</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>Professor at <a href="https://cotemig.com.br" target="_blank">Cotemig</a></span>
+                    <span class="date-badge">2011</span>
+                </h3>
+                <div class="job-details">I created a intensive course about introduction to Android development.</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>Professor at <a href="https://www.cefetmg.br" target="_blank">CEFET-MG</a></span>
+                    <span class="date-badge">2010 - 2011</span>
+                </h3>
+                <div class="job-details">Graduate Teaching Computer Programming for Mechanical Engineering Data Structures and Algorithms 1 e 2 for Computing Engineering (C++)</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>Researcher at Ilusis Interactive Graphics</span>
+                    <span class="date-badge">2010</span>
+                </h3>
+                <div class="job-details">Development C/C++, Mobile (Android, JME), Network (Sockets, HTTP), AS3 and Games</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>Senior Systems Analyst at <a href="https://stefanini.com" target="_blank">Stefanini</a></span>
+                    <span class="date-badge">2009 - 2010</span>
+                </h3>
+                <div class="job-details">C++ Developer, C++ Builder, Visual C++, Oracle and Java (JSF, HIBERNATE, SPRING).</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>Professor at Instituto Metodista Izabela Hendrix</span>
+                    <span class="date-badge">2009</span>
+                </h3>
+                <div class="job-details">Graduate Teaching 3D Programming (OpenGL/C++), Mobile Programming (JME) and Software Engineering.</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>Developer at <a href="https://tacom.com.br" target="_blank">TACOM Soluções em Mobilidade</a></span>
+                    <span class="date-badge">2008 - 2009</span>
+                </h3>
+                <div class="job-details">Development C/C++, System Analysts, Embedded Systems, OpenCV and R&D.</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>University Professor at <a href="https://www.pucminas.br" target="_blank">Pontifícia Universidade Católica de Minas Gerais</a></span>
+                    <span class="date-badge">2008 - 2009</span>
+                </h3>
+                <div class="job-details">Graduate Teaching Data Structures and Algorithms for Digital Games.</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>Software Development Engineer at i2 Software</span>
+                    <span class="date-badge">2007 - 2008</span>
+                </h3>
+                <div class="job-details">C++/C development Unix development Perl development Palm Os development</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>Quality Assurance Support at <a href="https://www.cin.ufpe.br" target="_blank">Cin/Motorola - UFPE</a></span>
+                    <span class="date-badge">2006</span>
+                </h3>
+                <div class="job-details">Software Tester to Motorola phones.</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>Systems Analyst at i2 Software</span>
+                    <span class="date-badge">2005 - 2006</span>
+                </h3>
+                <div class="job-details">Development Palm OS C/C++, Delphi, UML.</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>Volunteer Teaching Assistant at <a href="https://www.pucminas.br" target="_blank">Pontifícia Universidade Católica de Minas Gerais</a></span>
+                    <span class="date-badge">2004</span>
+                </h3>
+                <div class="job-details">Architecture and Computer Organization I and Operating Systems (Linux, C, Assembly)</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>Teaching Assistant at <a href="https://www.pucminas.br" target="_blank">Pontifícia Universidade Católica de Minas Gerais</a></span>
+                    <span class="date-badge">2003</span>
+                </h3>
+                <div class="job-details">Data Structures and Algorithms. (C/C++)</div>
+            </div>
+            
+            <div class="job">
+                <h3>
+                    <span>Teaching Assistant at <a href="https://www.pucminas.br" target="_blank">Pontifícia Universidade Católica de Minas Gerais</a></span>
+                    <span class="date-badge">2003</span>
+                </h3>
+                <div class="job-details">Data Structures and Algorithms (C/C++)</div>
+            </div>
+        </section>
 
-    <section id="contact">
-        <h2>Contact</h2>
-        <p><strong>Location:</strong> Belo horizonte/MG</p>
-        <p><strong>LinkedIn:</strong> <a href="http://www.linkedin.com/in/rogeriocs">www.linkedin.com/in/rogeriocs</a>
-        </p>
-        <p><strong>GitHub:</strong> <a href="https://github.com/rogerioc">github.com/rogerioc</a></p>
-        <p><strong>Bitbucket:</strong> <a href="https://bitbucket.org/rogerioc">bitbucket.org/rogerioc</a></p>
-    </section>
+        <section id="publications">
+            <h2>Publications</h2>
+            
+            <div class="publication">
+                <h3>
+                    <span><a href="https://www.sbgames.org/papers/sbgames08/computingtrack/short/cts22_08.pdf" target="_blank">Uma Comparação Preliminar entre Tecnologias para Implementação de Variabilidades em Jogos para Celulares</a></span>
+                    <span class="date-badge">2008</span>
+                </h3>
+                <p><i>SBGames, Belo Horizonte, MG, Brasil</i></p>
+                <p style="margin-top: 8px;">Descreve-se e compara-se neste artigo um conjunto de tecnologias para implementação de variabilidades na área de jogos para celulares. Para isso, mostra-se um estudo de caso onde uma variabilidade de um jogo para celular foi implementada por meio de três tecnologias: compilação condicional, programação orientada por aspectos e programação orientada por features.</p>
+            </div>
+            
+            <div class="publication">
+                <h3>
+                    <span><a href="https://drive.google.com/file/d/0BzIZOBGfuIwObm1xMzl6ckVUYmc/view" target="_blank">Extração de uma Linha de Produtos de Software na área de Jogos para Celulares usando Programação Orientada por Features</a></span>
+                    <span class="date-badge">2008</span>
+                </h3>
+                <p><i>II Latin American Workshop on Aspect-Oriented Software Development (LA-WASP), Campinas, SP, Brasil</i></p>
+                <p style="margin-top: 8px;">This paper documents an experience in extracting a software product line in the domain of mobile phone games. The described product line has been implemented using feature-oriented programming, as supported by the AHEAD system. The paper also presents a quantitative and qualitative evaluation of the extracted product line and compares AHEAD with alternative technologies, notably with aspect-oriented programming.</p>
+            </div>
+            
+            <div class="publication">
+                <h3>
+                    <span><a href="https://drive.google.com/file/d/0BzIZOBGfuIwOcXMxTVozNUJYbjA/view" target="_blank">Use of Aspect Oriented to specify device’s variability in Requirement of Motorola’s feature</a></span>
+                    <span class="date-badge">2006</span>
+                </h3>
+                <p><i>Universidade Federal de Pernambuco (UFPE), Recife, PE, Brasil</i></p>
+                <p style="margin-top: 8px;">The purpose of this work is to present an effective technique for describing the variations of mobile phone within requirements using the Aspect Oriented paradigm, thus allowing an effective traceability control of related requirements, reducing the redundance, promoting the maintenance and facilitating new features creation.</p>
+            </div>
+            
+            <div class="publication">
+                <h3>
+                    <span><a href="https://drive.google.com/file/d/0BzIZOBGfuIwOeElVVWVyc2dMeW8/view" target="_blank">Utilização de árvores B para armazenamento de dados no Palm OS</a></span>
+                    <span class="date-badge">2006</span>
+                </h3>
+                <p><i>IV Encontro Mineiro dos Estudantes de Computação (EMECOMP), Itajubá, MG, Brasil</i></p>
+                <p style="margin-top: 8px;">Resumo: O Palm OS é um sistema operacional para dispositivo móvel que possui uma forma bastante primitiva de armazenamento de dados, já que sua estrutura é baseada em listas encadeadas. Sua eficiência é satisfatória até um determinado volume de dados, após este limite sua eficiência fica comprometida. Este trabalho tem o intuito de demonstrar uma nova forma de armazenamento de dados mais eficiente para o sistema Palm OS utilizando estrutura de dados árvores B.</p>
+            </div>
+            
+            <div class="publication">
+                <h3>
+                    <span><a href="https://drive.google.com/file/d/0BzIZOBGfuIwOdXdqMlpOUER3eVE/view" target="_blank">Uma comparação de algoritmos e estruturas de dados para armazenamento de dados em sistemas operacionais Palm OS</a></span>
+                    <span class="date-badge">2005</span>
+                </h3>
+                <p><i>IV Simpósio De Informática da Região Centro do Rio Grande do Sul (SIRC/RS), Santa Maria, RS, Brasil</i></p>
+                <p style="margin-top: 8px;">Resumo: Quando consideramos um sistema de banco de dados na plataforma Palm OS, nos deparamos com uma forma bastante primitiva de armazenamento de dados, já que sua estrutura é baseada em listas encadeadas. Sua eficiência é satisfatória até um determinado volume de dados, após o qual sua eficiência fica comprometida. Este trabalho tem o intuito de apresentar uma nova forma de armazenamento de dados, mais eficiente, para o sistema Palm OS. Para isso, duas estruturas de dados serão comparadas.</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <strong>Location</strong>
+                    <span>Belo Horizonte, MG, Brazil</span>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                    <strong>LinkedIn</strong>
+                    <a href="http://www.linkedin.com/in/rogeriocs" target="_blank">linkedin.com/in/rogeriocs</a>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fa-brands fa-github"></i>
+                    <strong>GitHub</strong>
+                    <a href="https://github.com/rogerioc" target="_blank">github.com/rogerioc</a>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fa-brands fa-git-alt"></i>
+                    <strong>Bitbucket</strong>
+                    <a href="https://bitbucket.org/rogerioc" target="_blank">bitbucket.org/rogerioc</a>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; 2025 Rogerio Celestino</p>
+        <p>&copy; 2025 - 2026 Rogerio Celestino. Built with visual excellence.</p>
     </footer>
 
 </body>
