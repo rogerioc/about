@@ -994,6 +994,25 @@ Main responsibilities:
         <p>&copy; 2025 - 2026 Rogerio Celestino. Built with visual excellence.</p>
     </footer>
 
+    <!-- Firebase Analytics -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-analytics.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAvCPRencB-MuesLi2KMtxVRs4GIyuKQn4",
+            authDomain: "my-about-790ec.firebaseapp.com",
+            projectId: "my-about-790ec",
+            storageBucket: "my-about-790ec.firebasestorage.app",
+            messagingSenderId: "4085608199",
+            appId: "1:4085608199:web:1b77a50bad656bc6279fa2",
+            measurementId: "G-YJRKP7S15W"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
+
 </body>
 
 </html>
