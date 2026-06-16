@@ -12,25 +12,19 @@
             --bg: #0d1117;
             --bg-soft: #161b22;
             --card: #161b22;
-            --line: #262d36;
+            --line: #1e2631;
+            --line-soft: #30363d;
             --ink: #e6edf3;
-            --muted: #9aa7b4;
-            --accent: #4d9fff;
-            --accent-2: #7c5cff;
-            --chip: #1c2530;
-            --chip-ink: #bcd2ec;
+            --muted: #8b949e;
+            --accent: #a3e635;
+            --accent-2: #c084fc;
+            --chip-lime: #111a00;
+            --chip-violet: #1a0a2e;
             --max: 1080px;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0
-        }
-
-        html {
-            scroll-behavior: smooth
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0 }
+        html { scroll-behavior: smooth }
 
         body {
             background: var(--bg);
@@ -40,20 +34,10 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        a {
-            color: var(--accent);
-            text-decoration: none
-        }
+        a { color: var(--accent); text-decoration: none }
+        a:hover { text-decoration: underline }
 
-        a:hover {
-            text-decoration: underline
-        }
-
-        .wrap {
-            max-width: var(--max);
-            margin: 0 auto;
-            padding: 0 24px
-        }
+        .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px }
 
         /* nav */
         header.nav {
@@ -61,7 +45,7 @@
             top: 0;
             z-index: 50;
             backdrop-filter: blur(10px);
-            background: rgba(13, 17, 23, .78);
+            background: rgba(13, 17, 23, .85);
             border-bottom: 1px solid var(--line)
         }
 
@@ -74,43 +58,22 @@
             justify-content: space-between
         }
 
-        .brand {
-            font-weight: 700;
-            letter-spacing: .3px
-        }
+        .brand { font-weight: 700; letter-spacing: .3px }
+        .brand span { color: var(--accent) }
 
-        .brand span {
-            color: var(--accent)
-        }
+        .nav-links { display: flex; gap: 22px }
+        .nav-links a { color: var(--muted); font-size: 14px; font-weight: 500 }
+        .nav-links a:hover { color: var(--ink); text-decoration: none }
 
-        .nav-links {
-            display: flex;
-            gap: 22px
-        }
-
-        .nav-links a {
-            color: var(--muted);
-            font-size: 14px;
-            font-weight: 500
-        }
-
-        .nav-links a:hover {
-            color: var(--ink);
-            text-decoration: none
-        }
-
-        @media(max-width:720px) {
-            .nav-links {
-                display: none
-            }
-        }
+        @media(max-width:720px) { .nav-links { display: none } }
 
         /* hero */
         .hero {
             padding: 84px 0 56px;
             border-bottom: 1px solid var(--line);
-            background: radial-gradient(1200px 400px at 70% -10%, rgba(124, 92, 255, .16), transparent 60%),
-                radial-gradient(900px 400px at 10% 0%, rgba(77, 159, 255, .14), transparent 55%)
+            background:
+                radial-gradient(900px 350px at 75% -10%, rgba(192, 132, 252, .12), transparent 60%),
+                radial-gradient(700px 300px at 5% 60%, rgba(163, 230, 53, .07), transparent 55%)
         }
 
         .eyebrow {
@@ -120,8 +83,8 @@
             letter-spacing: 1.5px;
             text-transform: uppercase;
             color: var(--accent);
-            background: var(--chip);
-            border: 1px solid var(--line);
+            background: var(--chip-lime);
+            border: 1px solid rgba(163,230,53,.2);
             padding: 6px 12px;
             border-radius: 999px
         }
@@ -133,11 +96,12 @@
             letter-spacing: -1px
         }
 
-        .hero .role {
-            font-size: clamp(18px, 2.6vw, 24px);
-            color: var(--ink);
-            font-weight: 600
+        .hero h1 em {
+            font-style: normal;
+            color: var(--accent)
         }
+
+        .hero .role { font-size: clamp(18px, 2.6vw, 24px); color: var(--ink); font-weight: 600 }
 
         .hero .sub {
             font-size: 18px;
@@ -146,12 +110,7 @@
             margin-top: 14px
         }
 
-        .cta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 30px
-        }
+        .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px }
 
         .btn {
             display: inline-flex;
@@ -161,35 +120,30 @@
             border-radius: 10px;
             font-weight: 600;
             font-size: 15px;
-            border: 1px solid var(--line)
+            border: 1px solid var(--line-soft)
         }
 
         .btn.primary {
             background: linear-gradient(135deg, var(--accent), var(--accent-2));
-            color: #fff;
+            color: #0d1117;
             border: none
         }
 
-        .btn.primary:hover {
-            opacity: .92;
-            text-decoration: none
-        }
+        .btn.primary:hover { opacity: .92; text-decoration: none }
 
-        .btn.ghost {
-            background: var(--bg-soft);
-            color: var(--ink)
-        }
-
-        .btn.ghost:hover {
-            border-color: var(--accent);
-            text-decoration: none
-        }
+        .btn.ghost { background: var(--bg-soft); color: var(--ink) }
+        .btn.ghost:hover { border-color: var(--accent); text-decoration: none }
 
         /* sections */
         section {
             padding: 64px 0;
-            border-bottom: 1px solid var(--line)
+            border-bottom: 1px solid var(--line);
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .6s ease, transform .6s ease
         }
+
+        section.visible { opacity: 1; transform: none }
 
         .kicker {
             font-size: 13px;
@@ -205,17 +159,8 @@
             letter-spacing: -.5px
         }
 
-        .lead p {
-            color: var(--muted);
-            font-size: 17px;
-            max-width: 760px;
-            margin-bottom: 16px
-        }
-
-        .lead strong {
-            color: var(--ink);
-            font-weight: 600
-        }
+        .lead p { color: var(--muted); font-size: 17px; max-width: 760px; margin-bottom: 16px }
+        .lead strong { color: var(--ink); font-weight: 600 }
 
         /* projects */
         .grid {
@@ -224,29 +169,22 @@
             gap: 18px
         }
 
-        @media(max-width:720px) {
-            .grid {
-                grid-template-columns: 1fr
-            }
-        }
+        @media(max-width:720px) { .grid { grid-template-columns: 1fr } }
 
         .card {
             background: var(--card);
-            border: 1px solid var(--line);
+            border: 1px solid var(--line-soft);
             border-radius: 14px;
             padding: 22px;
-            transition: .2s
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity .4s ease, transform .4s ease, border-color .2s
         }
 
-        .card:hover {
-            border-color: var(--accent);
-            transform: translateY(-2px)
-        }
+        .card.vis { opacity: 1; transform: none }
+        .card:hover { border-color: var(--accent); transform: translateY(-2px) }
 
-        .card h3 {
-            font-size: 18px;
-            margin-bottom: 6px
-        }
+        .card h3 { font-size: 18px; margin-bottom: 6px }
 
         .card .stack {
             font-size: 12.5px;
@@ -256,10 +194,10 @@
             margin-bottom: 10px
         }
 
-        .card p {
-            color: var(--muted);
-            font-size: 14.5px
-        }
+        .card p { color: var(--muted); font-size: 14.5px }
+
+        .card p a { color: var(--accent); font-size: 13.5px }
+        .card p a.demo { color: var(--accent-2) }
 
         .badge {
             display: inline-block;
@@ -268,7 +206,7 @@
             letter-spacing: .5px;
             text-transform: uppercase;
             color: var(--accent-2);
-            border: 1px solid var(--line);
+            border: 1px solid rgba(192,132,252,.35);
             border-radius: 6px;
             padding: 2px 8px;
             margin-left: 6px;
@@ -276,90 +214,71 @@
         }
 
         /* skills */
-        .skillblock {
-            margin-bottom: 18px
-        }
+        .skillblock { margin-bottom: 18px }
+        .skillblock .label { font-weight: 700; color: var(--ink); margin-bottom: 8px }
 
-        .skillblock .label {
-            font-weight: 700;
-            color: var(--ink);
-            margin-bottom: 8px
-        }
-
-        .chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px
-        }
+        .chips { display: flex; flex-wrap: wrap; gap: 8px }
 
         .chip {
-            background: var(--chip);
-            color: var(--chip-ink);
-            border: 1px solid var(--line);
+            background: var(--bg-soft);
+            color: var(--muted);
+            border: 1px solid var(--line-soft);
             border-radius: 999px;
             padding: 6px 13px;
             font-size: 13.5px
         }
 
         .chip.hot {
-            border-color: var(--accent);
-            color: #dbeaff
+            background: var(--chip-lime);
+            color: var(--accent);
+            border-color: rgba(163,230,53,.25)
+        }
+
+        .chip.hot2 {
+            background: var(--chip-violet);
+            color: var(--accent-2);
+            border-color: rgba(192,132,252,.25)
         }
 
         /* experience */
+        .timeline { position: relative; padding-left: 24px; border-left: 1.5px solid var(--line-soft) }
+
         .xp {
-            display: flex;
-            gap: 18px;
-            padding: 18px 0;
-            border-top: 1px solid var(--line)
+            position: relative;
+            padding: 0 0 24px 20px;
+            opacity: 0;
+            transform: translateX(-12px);
+            transition: opacity .4s ease, transform .4s ease
         }
 
-        .xp:first-of-type {
-            border-top: none
+        .xp.vis { opacity: 1; transform: none }
+
+        .xp::before {
+            content: '';
+            position: absolute;
+            left: -29px;
+            top: 7px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 2px solid var(--bg)
         }
 
-        .xp .when {
-            flex: 0 0 130px;
-            color: var(--muted);
-            font-size: 14px;
-            font-weight: 600
-        }
-
-        .xp .what h3 {
-            font-size: 17px
-        }
-
-        .xp .what .org {
-            color: var(--accent);
-            font-weight: 600
-        }
-
-        .xp .what p {
-            color: var(--muted);
-            font-size: 14.5px;
-            margin-top: 6px
-        }
-
-        @media(max-width:620px) {
-            .xp {
-                flex-direction: column;
-                gap: 4px
-            }
-
-            .xp .when {
-                flex: none
-            }
-        }
+        .xp .when { font-size: 13px; color: var(--accent); font-weight: 600; letter-spacing: .3px; margin-bottom: 4px }
+        .xp .what h3 { font-size: 17px }
+        .xp .what .org { color: var(--accent) }
+        .xp .what p { color: var(--muted); font-size: 14.5px; margin-top: 6px }
 
         .muted-note {
             color: var(--muted);
             font-size: 14.5px;
             margin-top: 18px;
             padding-top: 18px;
-            border-top: 1px dashed var(--line)
+            border-top: 1px dashed var(--line-soft)
         }
 
-        /* education / pubs */
+        /* education */
         .row {
             padding: 14px 0;
             border-top: 1px solid var(--line);
@@ -369,73 +288,32 @@
             flex-wrap: wrap
         }
 
-        .row:first-child {
-            border-top: none
-        }
+        .row:first-child { border-top: none }
+        .row .t { font-weight: 600 }
+        .row .s { color: var(--muted); font-size: 14px }
+        .row .yr { color: var(--muted); font-size: 14px; white-space: nowrap }
 
-        .row .t {
-            font-weight: 600
-        }
-
-        .row .s {
-            color: var(--muted);
-            font-size: 14px
-        }
-
-        .row .yr {
-            color: var(--muted);
-            font-size: 14px;
-            white-space: nowrap
-        }
-
-        .pub {
-            padding: 14px 0;
-            border-top: 1px solid var(--line)
-        }
-
-        .pub:first-child {
-            border-top: none
-        }
-
-        .pub .t {
-            font-weight: 600;
-            font-size: 15.5px
-        }
-
-        .pub .v {
-            color: var(--muted);
-            font-size: 13.5px;
-            font-style: italic
-        }
+        /* publications */
+        .pub { padding: 14px 0; border-top: 1px solid var(--line) }
+        .pub:first-child { border-top: none }
+        .pub .t { font-weight: 600; font-size: 15.5px }
+        .pub .v { color: var(--muted); font-size: 13.5px; font-style: italic }
 
         /* contact */
-        .contact-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-            margin-top: 8px
-        }
+        .contact-grid { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px }
 
         .contact-grid a {
             background: var(--bg-soft);
-            border: 1px solid var(--line);
+            border: 1px solid var(--line-soft);
             border-radius: 10px;
             padding: 12px 18px;
             color: var(--ink);
             font-weight: 600
         }
 
-        .contact-grid a:hover {
-            border-color: var(--accent);
-            text-decoration: none
-        }
+        .contact-grid a:hover { border-color: var(--accent); text-decoration: none }
 
-        footer {
-            padding: 30px 0;
-            text-align: center;
-            color: var(--muted);
-            font-size: 13px
-        }
+        footer { padding: 30px 0; text-align: center; color: var(--muted); font-size: 13px }
     </style>
 </head>
 
@@ -459,7 +337,7 @@
     <div class="hero">
         <div class="wrap">
             <span class="eyebrow">Senior Software Engineer → Applied AI</span>
-            <h1>Two decades of engineering,<br />now applied to AI.</h1>
+            <h1>Two decades of engineering,<br /><em>now applied to AI.</em></h1>
             <div class="role">Transitioning into Applied AI — LLM applications, RAG &amp; on-device ML, on 20+ years of
                 production engineering.</div>
             <p class="sub">A deliberate pivot: pairing hands-on AI projects with the architecture, backend, and mobile
@@ -509,7 +387,7 @@
                         (geospatial Haversine filtering, schedule and availability checks) over a real dataset,
                         deployed live on Streamlit.
                         <a href="https://github.com/rogerioc/my-duogourmet-concierge-agent" target="_blank" rel="noopener">Code →</a> ·
-                        <a href="https://rcs-duogourmet-concierge.streamlit.app/" target="_blank" rel="noopener">Live demo →</a></p>
+                        <a class="demo" href="https://rcs-duogourmet-concierge.streamlit.app/" target="_blank" rel="noopener">Live demo →</a></p>
                 </div>
                 <div class="card">
                     <h3>Semantic Search / RAG Service</h3>
@@ -575,39 +453,51 @@
             <div class="skillblock">
                 <div class="label">Machine Learning &amp; Data</div>
                 <div class="chips">
-                    <span class="chip">PyTorch</span><span class="chip">TensorFlow</span><span
-                        class="chip">scikit-learn</span>
-                    <span class="chip">Deep Learning</span><span class="chip">Computer Vision (OpenCV)</span><span
-                        class="chip">NLP</span>
-                    <span class="chip">Prefect</span><span class="chip">Data pipelines</span>
+                    <span class="chip hot2">PyTorch</span>
+                    <span class="chip hot2">TensorFlow</span>
+                    <span class="chip hot2">scikit-learn</span>
+                    <span class="chip hot2">Deep Learning</span>
+                    <span class="chip hot2">Computer Vision (OpenCV)</span>
+                    <span class="chip hot2">NLP</span>
+                    <span class="chip hot2">Prefect</span>
+                    <span class="chip hot2">Data pipelines</span>
                 </div>
             </div>
             <div class="skillblock">
                 <div class="label">Backend &amp; Cloud</div>
                 <div class="chips">
-                    <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">REST APIs</span>
-                    <span class="chip">Firebase / Firestore</span><span class="chip">Cloud Functions</span><span
-                        class="chip">AWS</span>
-                    <span class="chip">Docker</span><span class="chip">SQL</span>
+                    <span class="chip">Python</span>
+                    <span class="chip">FastAPI</span>
+                    <span class="chip">REST APIs</span>
+                    <span class="chip">Firebase / Firestore</span>
+                    <span class="chip">Cloud Functions</span>
+                    <span class="chip">AWS</span>
+                    <span class="chip">Docker</span>
+                    <span class="chip">SQL</span>
                 </div>
             </div>
             <div class="skillblock">
                 <div class="label">Mobile</div>
                 <div class="chips">
-                    <span class="chip">Swift / SwiftUI</span><span class="chip">Kotlin / Jetpack Compose</span><span
-                        class="chip">Objective-C</span>
-                    <span class="chip">Clean Architecture</span><span class="chip">MVVM / VIP</span><span
-                        class="chip">Server-Driven UI</span>
-                    <span class="chip">Modularization</span><span class="chip">CI/CD (Bitrise, Fastlane)</span>
+                    <span class="chip">Swift / SwiftUI</span>
+                    <span class="chip">Kotlin / Jetpack Compose</span>
+                    <span class="chip">Objective-C</span>
+                    <span class="chip">Clean Architecture</span>
+                    <span class="chip">MVVM / VIP</span>
+                    <span class="chip">Server-Driven UI</span>
+                    <span class="chip">Modularization</span>
+                    <span class="chip">CI/CD (Bitrise, Fastlane)</span>
                 </div>
             </div>
             <div class="skillblock">
                 <div class="label">Engineering &amp; Leadership</div>
                 <div class="chips">
-                    <span class="chip">Solution architecture</span><span class="chip">Technical leadership</span><span
-                        class="chip">Team building &amp; mentoring</span>
-                    <span class="chip">Agile / Scrum</span><span class="chip">TDD &amp; software quality</span><span
-                        class="chip">R&amp;D</span>
+                    <span class="chip">Solution architecture</span>
+                    <span class="chip">Technical leadership</span>
+                    <span class="chip">Team building &amp; mentoring</span>
+                    <span class="chip">Agile / Scrum</span>
+                    <span class="chip">TDD &amp; software quality</span>
+                    <span class="chip">R&amp;D</span>
                 </div>
             </div>
         </div>
@@ -618,67 +508,62 @@
         <div class="wrap">
             <div class="kicker">Career</div>
             <h2>Experience</h2>
-
-            <div class="xp">
-                <div class="when">2025 – 2026</div>
-                <div class="what">
-                    <h3>Software Engineer Specialist, Mobile · <span class="org">Inter</span></h3>
-                    <p>Led mobile architecture for a payment-terminal product, delivering a lean, purpose-built app
-                        through build flavors, selective dependency exclusion, and product variants with zero code
-                        duplication. Technical leadership on the Server-Driven UI (SDUI) SDK; Kotlin, Swift, NFC,
-                        SoftPOS.</p>
+            <div class="timeline">
+                <div class="xp">
+                    <div class="when">2025 – 2026</div>
+                    <div class="what">
+                        <h3>Software Engineer Specialist, Mobile · <span class="org">Inter</span></h3>
+                        <p>Led mobile architecture for a payment-terminal product, delivering a lean, purpose-built app
+                            through build flavors, selective dependency exclusion, and product variants with zero code
+                            duplication. Technical leadership on the Server-Driven UI (SDUI) SDK; Kotlin, Swift, NFC,
+                            SoftPOS.</p>
+                    </div>
+                </div>
+                <div class="xp">
+                    <div class="when">2022 – 2025</div>
+                    <div class="what">
+                        <h3>Mobile Engineer / Tech Lead · <span class="org">GetNinjas</span></h3>
+                        <p>Led squad technical direction, solution architecture, and strategic mobile planning. Drove
+                            reliability and scaling — high crash-free rates — integrating AWS, Firebase, Salesforce CMS,
+                            and attribution platforms. Delivered iOS features in Swift with Clean Architecture, VIP,
+                            modularization, and CI/CD; mentored the team.</p>
+                    </div>
+                </div>
+                <div class="xp">
+                    <div class="when">2021 – 2022</div>
+                    <div class="what">
+                        <h3>Mobile Specialist · <span class="org">Zup Innovation</span></h3>
+                        <p>Architected Android and iOS solutions, delivering clean, well-designed code in small functional
+                            increments and driving key implementation decisions.</p>
+                    </div>
+                </div>
+                <div class="xp">
+                    <div class="when">2020 – 2021</div>
+                    <div class="what">
+                        <h3>iOS Specialist · <span class="org">Warren Brasil</span></h3>
+                        <p>Built and maintained features in Swift and SwiftUI applying modern architectures (MVVM, The
+                            Composable Architecture) with a strong unit-testing focus.</p>
+                    </div>
+                </div>
+                <div class="xp">
+                    <div class="when">2019 – 2020</div>
+                    <div class="what">
+                        <h3>Mobile Solutions Architect / iOS Tech Lead · <span class="org">Inter</span></h3>
+                        <p>Led the iOS team and architected Android, iOS, and back-end solutions; owned the Inter Empresas
+                            app and contributed to PIX. Built a WebView micro-framework to accelerate feature delivery
+                            across native platforms.</p>
+                    </div>
+                </div>
+                <div class="xp">
+                    <div class="when">2018 – 2019</div>
+                    <div class="what">
+                        <h3>Senior Mobile Software Engineer · <span class="org">MaxMilhas</span></h3>
+                        <p>Developed native Android (Kotlin/Java) and iOS (Swift/Objective-C) apps with reactive
+                            programming (Rx). Served as technical reference and stepped in as Tech Lead within six months.
+                            The app drove 20%+ of ticket sales.</p>
+                    </div>
                 </div>
             </div>
-
-            <div class="xp">
-                <div class="when">2022 – 2025</div>
-                <div class="what">
-                    <h3>Mobile Engineer / Tech Lead · <span class="org">GetNinjas</span></h3>
-                    <p>Led squad technical direction, solution architecture, and strategic mobile planning. Drove
-                        reliability and scaling — high crash-free rates — integrating AWS, Firebase, Salesforce CMS, and
-                        attribution platforms. Delivered iOS features in Swift with Clean Architecture, VIP,
-                        modularization, and CI/CD; mentored the team.</p>
-                </div>
-            </div>
-
-            <div class="xp">
-                <div class="when">2021 – 2022</div>
-                <div class="what">
-                    <h3>Mobile Specialist · <span class="org">Zup Innovation</span></h3>
-                    <p>Architected Android and iOS solutions, delivering clean, well-designed code in small functional
-                        increments and driving key implementation decisions.</p>
-                </div>
-            </div>
-
-            <div class="xp">
-                <div class="when">2020 – 2021</div>
-                <div class="what">
-                    <h3>iOS Specialist · <span class="org">Warren Brasil</span></h3>
-                    <p>Built and maintained features in Swift and SwiftUI applying modern architectures (MVVM, The
-                        Composable Architecture) with a strong unit-testing focus.</p>
-                </div>
-            </div>
-
-            <div class="xp">
-                <div class="when">2019 – 2020</div>
-                <div class="what">
-                    <h3>Mobile Solutions Architect / iOS Tech Lead · <span class="org">Inter</span></h3>
-                    <p>Led the iOS team and architected Android, iOS, and back-end solutions; owned the Inter Empresas
-                        app and contributed to PIX. Built a WebView micro-framework to accelerate feature delivery
-                        across native platforms.</p>
-                </div>
-            </div>
-
-            <div class="xp">
-                <div class="when">2018 – 2019</div>
-                <div class="what">
-                    <h3>Senior Mobile Software Engineer · <span class="org">MaxMilhas</span></h3>
-                    <p>Developed native Android (Kotlin/Java) and iOS (Swift/Objective-C) apps with reactive programming
-                        (Rx). Served as technical reference and stepped in as Tech Lead within six months. The app drove
-                        20%+ of ticket sales.</p>
-                </div>
-            </div>
-
             <p class="muted-note"><strong style="color:var(--ink)">Earlier (2003–2018):</strong> Mobile Tech Lead @
                 Samba Tech (built the mobile team from scratch) · CNPq R&amp;D Researcher @ Netbee (Intelligent
                 Transport Systems, MQTT) · University Professor at PUC Minas, CEFET-MG and UniBH (mobile architecture,
@@ -770,6 +655,38 @@
     </section>
 
     <footer>© 2025–2026 Rogério Celestino · Belo Horizonte, Brazil</footer>
+
+    <script>
+        const sections = document.querySelectorAll('section');
+        const cards = document.querySelectorAll('.card');
+        const xpItems = document.querySelectorAll('.xp');
+
+        function reveal(els, cls) {
+            const obs = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) { e.target.classList.add(cls); obs.unobserve(e.target); }
+                });
+            }, { threshold: 0.1 });
+            els.forEach(e => obs.observe(e));
+        }
+
+        function stagger(items, cls, delay) {
+            const obs = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        const idx = Array.from(items).indexOf(e.target);
+                        setTimeout(() => e.target.classList.add(cls), idx * delay);
+                        obs.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.08 });
+            items.forEach(e => obs.observe(e));
+        }
+
+        reveal(sections, 'visible');
+        stagger(cards, 'vis', 100);
+        stagger(xpItems, 'vis', 110);
+    </script>
 
 </body>
 
