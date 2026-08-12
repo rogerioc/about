@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en">
 
 <head>
     <meta charset="UTF-8" />
@@ -25,6 +25,10 @@
 
         * { box-sizing: border-box; margin: 0; padding: 0 }
         html { scroll-behavior: smooth }
+
+        /* i18n */
+        html[data-lang="en"] .pt { display: none !important }
+        html[data-lang="pt"] .en { display: none !important }
 
         body {
             background: var(--bg);
@@ -58,6 +62,8 @@
             justify-content: space-between
         }
 
+        .nav-right { display: flex; align-items: center; gap: 18px }
+
         .brand { font-weight: 700; letter-spacing: .3px }
         .brand span { color: var(--accent) }
 
@@ -66,6 +72,27 @@
         .nav-links a:hover { color: var(--ink); text-decoration: none }
 
         @media(max-width:720px) { .nav-links { display: none } }
+
+        .lang-switch {
+            display: flex;
+            border: 1px solid var(--line-soft);
+            border-radius: 999px;
+            overflow: hidden
+        }
+
+        .lang-switch button {
+            background: transparent;
+            color: var(--muted);
+            border: none;
+            padding: 5px 11px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            cursor: pointer;
+            font-family: inherit
+        }
+
+        .lang-switch button.active { background: var(--accent); color: #0d1117 }
 
         /* hero */
         .hero {
@@ -96,19 +123,11 @@
             letter-spacing: -1px
         }
 
-        .hero h1 em {
-            font-style: normal;
-            color: var(--accent)
-        }
+        .hero h1 em { font-style: normal; color: var(--accent) }
 
         .hero .role { font-size: clamp(18px, 2.6vw, 24px); color: var(--ink); font-weight: 600 }
 
-        .hero .sub {
-            font-size: 18px;
-            color: var(--muted);
-            max-width: 680px;
-            margin-top: 14px
-        }
+        .hero .sub { font-size: 18px; color: var(--muted); max-width: 680px; margin-top: 14px }
 
         .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px }
 
@@ -145,30 +164,15 @@
 
         section.visible { opacity: 1; transform: none }
 
-        .kicker {
-            font-size: 13px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--accent);
-            font-weight: 700
-        }
+        .kicker { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); font-weight: 700 }
 
-        h2 {
-            font-size: clamp(26px, 4vw, 34px);
-            margin: 8px 0 26px;
-            letter-spacing: -.5px
-        }
+        h2 { font-size: clamp(26px, 4vw, 34px); margin: 8px 0 26px; letter-spacing: -.5px }
 
         .lead p { color: var(--muted); font-size: 17px; max-width: 760px; margin-bottom: 16px }
         .lead strong { color: var(--ink); font-weight: 600 }
 
         /* projects */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 18px
-        }
-
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px }
         @media(max-width:720px) { .grid { grid-template-columns: 1fr } }
 
         .card {
@@ -195,7 +199,6 @@
         }
 
         .card p { color: var(--muted); font-size: 14.5px }
-
         .card p a { color: var(--accent); font-size: 13.5px }
         .card p a.demo { color: var(--accent-2) }
 
@@ -228,17 +231,8 @@
             font-size: 13.5px
         }
 
-        .chip.hot {
-            background: var(--chip-lime);
-            color: var(--accent);
-            border-color: rgba(163,230,53,.25)
-        }
-
-        .chip.hot2 {
-            background: var(--chip-violet);
-            color: var(--accent-2);
-            border-color: rgba(192,132,252,.25)
-        }
+        .chip.hot { background: var(--chip-lime); color: var(--accent); border-color: rgba(163,230,53,.25) }
+        .chip.hot2 { background: var(--chip-violet); color: var(--accent-2); border-color: rgba(192,132,252,.25) }
 
         /* experience */
         .timeline { position: relative; padding-left: 24px; border-left: 1.5px solid var(--line-soft) }
@@ -324,14 +318,20 @@
     <header class="nav">
         <div class="nav-inner">
             <div class="brand">Rogério <span>Celestino</span></div>
-            <nav class="nav-links">
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#skills">Skills</a>
-                <a href="#experience">Experience</a>
-                <a href="#education">Education</a>
-                <a href="#contact">Contact</a>
-            </nav>
+            <div class="nav-right">
+                <nav class="nav-links">
+                    <a href="#about"><span class="en">About</span><span class="pt">Sobre</span></a>
+                    <a href="#projects"><span class="en">Projects</span><span class="pt">Projetos</span></a>
+                    <a href="#skills"><span class="en">Skills</span><span class="pt">Competências</span></a>
+                    <a href="#experience"><span class="en">Experience</span><span class="pt">Experiência</span></a>
+                    <a href="#education"><span class="en">Education</span><span class="pt">Formação</span></a>
+                    <a href="#contact"><span class="en">Contact</span><span class="pt">Contato</span></a>
+                </nav>
+                <div class="lang-switch" role="group" aria-label="Language">
+                    <button data-set-lang="pt">PT</button>
+                    <button data-set-lang="en">EN</button>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -339,16 +339,21 @@
     <div class="hero">
         <div class="wrap">
             <span class="eyebrow">Senior Software Engineer → Applied AI</span>
-            <h1>Two decades of engineering,<br /><em>now applied to AI.</em></h1>
-            <div class="role">Transitioning into Applied AI — LLM applications, RAG &amp; on-device ML, on 20+ years of
+            <h1 class="en">Two decades of engineering,<br /><em>now applied to AI.</em></h1>
+            <h1 class="pt">Duas décadas de engenharia,<br /><em>agora aplicadas à IA.</em></h1>
+            <div class="role en">Transitioning into Applied AI — LLM applications, RAG &amp; on-device ML, on 20+ years of
                 production engineering.</div>
-            <p class="sub">A deliberate pivot: pairing hands-on AI projects with the architecture, backend, and mobile
+            <div class="role pt">Transição para Applied AI — aplicações com LLM, RAG e ML on-device, sobre 20+ anos de
+                engenharia em produção.</div>
+            <p class="sub en">A deliberate pivot: pairing hands-on AI projects with the architecture, backend, and mobile
                 delivery that turn models into real products. MSc in Software Engineering · 5 peer-reviewed
                 publications.</p>
+            <p class="sub pt">Um pivô deliberado: unindo projetos práticos de IA à arquitetura, back-end e entrega mobile
+                que transformam modelos em produtos reais. Mestre em Engenharia de Software · 5 publicações revisadas por
+                pares.</p>
             <div class="cta">
-                <a class="btn primary" href="#projects">View projects</a>
-                <a class="btn ghost" href="https://www.linkedin.com/in/rogeriocs/" target="_blank"
-                    rel="noopener">LinkedIn</a>
+                <a class="btn primary" href="#projects"><span class="en">View projects</span><span class="pt">Ver projetos</span></a>
+                <a class="btn ghost" href="https://www.linkedin.com/in/rogeriocs/" target="_blank" rel="noopener">LinkedIn</a>
                 <a class="btn ghost" href="https://github.com/rogerioc" target="_blank" rel="noopener">GitHub</a>
             </div>
         </div>
@@ -357,84 +362,133 @@
     <!-- ABOUT -->
     <section id="about">
         <div class="wrap lead">
-            <div class="kicker">About</div>
-            <h2>Engineering judgment, applied to AI</h2>
-            <p>I'm a senior software engineer with <strong>20+ years building and shipping production systems</strong>,
-                now making a deliberate move into Applied AI. Over the past year I've gone deep — completing a
-                postgraduate program in AI Engineering (2025) plus hands-on projects in LLM applications,
-                retrieval-augmented search, and on-device model inference. I work across the full stack of an AI
-                feature: prompt and context engineering, structured model outputs, the backend services that run them,
-                and the mobile clients that deliver them.</p>
-            <p>For over a decade I architected high-traffic fintech and marketplace mobile platforms, leading teams and
-                setting technical direction. That production background is exactly what lets me build AI that holds up in
-                real systems, not only in notebooks.</p>
-            <p>I hold an <strong>MSc in Software Engineering</strong> and a MEC-recognized postgraduate specialization in
-                AI Engineering, have taught at both undergraduate and postgraduate level, and have five peer-reviewed
-                publications in software engineering.</p>
+            <div class="kicker"><span class="en">About</span><span class="pt">Sobre</span></div>
+            <h2 class="en">Engineering judgment, applied to AI</h2>
+            <h2 class="pt">Julgamento de engenharia, aplicado à IA</h2>
+            <p class="en">I'm a senior software engineer with <strong>20+ years building and shipping production
+                systems</strong>, now making a deliberate move into Applied AI. Over the past year I've gone deep —
+                completing a postgraduate program in AI Engineering (2025) plus hands-on projects in LLM applications,
+                retrieval-augmented search, and on-device model inference. I work across the full stack of an AI feature:
+                prompt and context engineering, structured model outputs, the backend services that run them, and the
+                mobile clients that deliver them.</p>
+            <p class="pt">Sou engenheiro de software sênior com <strong>mais de 20 anos construindo e entregando
+                sistemas em produção</strong>, hoje fazendo um movimento deliberado para Applied AI. No último ano fui a
+                fundo — concluí uma pós-graduação em Engenharia de IA (2025) e projetos práticos em aplicações com LLM,
+                busca aumentada por recuperação (RAG) e inferência de modelos on-device. Atuo em toda a stack de uma
+                feature de IA: engenharia de prompt e contexto, saídas estruturadas de modelo, os serviços de back-end que
+                as executam e os clientes mobile que as entregam.</p>
+            <p class="en">For over a decade I architected high-traffic fintech and marketplace mobile platforms, leading
+                teams and setting technical direction. That production background is exactly what lets me build AI that
+                holds up in real systems, not only in notebooks.</p>
+            <p class="pt">Por mais de uma década arquitetei plataformas mobile de alto tráfego em fintech e marketplace,
+                liderando times e definindo direção técnica. É essa base de produção que me permite construir IA que se
+                sustenta em sistemas reais, não só em notebooks.</p>
+            <p class="en">I hold an <strong>MSc in Software Engineering</strong> and a MEC-recognized postgraduate
+                specialization in AI Engineering, have taught at both undergraduate and postgraduate level, and have five
+                peer-reviewed publications in software engineering.</p>
+            <p class="pt">Tenho <strong>Mestrado em Engenharia de Software</strong> e uma pós-graduação em Engenharia de
+                IA reconhecida pelo MEC, já lecionei em nível de graduação e pós-graduação, e tenho cinco publicações
+                revisadas por pares em engenharia de software.</p>
         </div>
     </section>
 
     <!-- PROJECTS -->
     <section id="projects">
         <div class="wrap">
-            <div class="kicker">Selected work</div>
-            <h2>AI Projects</h2>
-            <p style="color:var(--muted); font-size:15px; margin:-14px 0 22px">Hands-on AI builds — personal projects
-                and technical-challenge solutions — alongside production engineering highlights.</p>
+            <div class="kicker"><span class="en">Selected work</span><span class="pt">Trabalhos selecionados</span></div>
+            <h2 class="en">AI Projects</h2>
+            <h2 class="pt">Projetos de IA</h2>
+            <p class="en" style="color:var(--muted); font-size:15px; margin:-14px 0 22px">Hands-on AI builds — personal
+                projects and technical-challenge solutions — alongside production engineering highlights.</p>
+            <p class="pt" style="color:var(--muted); font-size:15px; margin:-14px 0 22px">Projetos práticos de IA —
+                pessoais e soluções de desafios técnicos — ao lado de destaques de engenharia de produção.</p>
             <div class="grid">
                 <div class="card">
-                    <h3>Duo Concierge — AI Agent with Tool Use <span class="badge">live demo</span></h3>
+                    <h3 class="en">Duo Concierge — AI Agent with Tool Use <span class="badge">live demo</span></h3>
+                    <h3 class="pt">Duo Concierge — Agente de IA com Tool Use <span class="badge">demo online</span></h3>
                     <div class="stack">Gemini · function calling · Streamlit</div>
-                    <p>Conversational recommendation agent: an LLM equipped with custom tools
-                        (geospatial Haversine filtering, schedule and availability checks) over a real dataset,
-                        deployed live on Streamlit.
+                    <p class="en">Conversational recommendation agent: an LLM equipped with custom tools (geospatial
+                        Haversine filtering, schedule and availability checks) over a real dataset, deployed live on
+                        Streamlit.
                         <a href="https://github.com/rogerioc/my-duogourmet-concierge-agent" target="_blank" rel="noopener">Code →</a> ·
                         <a class="demo" href="https://rcs-duogourmet-concierge.streamlit.app/" target="_blank" rel="noopener">Live demo →</a></p>
+                    <p class="pt">Agente conversacional de recomendação: um LLM com ferramentas próprias (filtro
+                        geoespacial Haversine, checagem de horário e disponibilidade) sobre dados reais, publicado no
+                        Streamlit.
+                        <a href="https://github.com/rogerioc/my-duogourmet-concierge-agent" target="_blank" rel="noopener">Código →</a> ·
+                        <a class="demo" href="https://rcs-duogourmet-concierge.streamlit.app/" target="_blank" rel="noopener">Demo online →</a></p>
                 </div>
                 <div class="card">
-                    <h3>AI Agents Engineering Guide <span class="badge">authored</span></h3>
+                    <h3 class="en">AI Agents Engineering Guide <span class="badge">authored</span></h3>
+                    <h3 class="pt">Guia de Engenharia de Agentes de IA <span class="badge">autoral</span></h3>
                     <div class="stack">LangGraph · LlamaIndex · Graph RAG · evaluation &amp; observability</div>
-                    <p>An open technical guide I'm writing on production agent engineering: ReAct &amp; multi-agent
-                        orchestration, context engineering, evaluation (LLM-as-a-Judge, DeepEval), observability (Langfuse),
-                        and advanced / Graph / Agentic RAG (Neo4j, LlamaIndex).
+                    <p class="en">An open technical guide I'm writing on production agent engineering: ReAct &amp;
+                        multi-agent orchestration, context engineering, evaluation (LLM-as-a-Judge, DeepEval),
+                        observability (Langfuse), and advanced / Graph / Agentic RAG (Neo4j, LlamaIndex).
                         <a href="https://github.com/rogerioc/ai-agents-engineering-guide" target="_blank" rel="noopener">Read →</a></p>
+                    <p class="pt">Guia técnico aberto que estou escrevendo sobre agentes em produção: ReAct e orquestração
+                        multi-agente, engenharia de contexto, avaliação (LLM-as-a-Judge, DeepEval), observabilidade
+                        (Langfuse) e RAG avançado / Graph / Agentic (Neo4j, LlamaIndex).
+                        <a href="https://github.com/rogerioc/ai-agents-engineering-guide" target="_blank" rel="noopener">Ler →</a></p>
                 </div>
                 <div class="card">
-                    <h3>Semantic Search / RAG Service</h3>
+                    <h3 class="en">Semantic Search / RAG Service</h3>
+                    <h3 class="pt">Busca Semântica / Serviço RAG</h3>
                     <div class="stack">Python · FAISS · sentence-transformers · FastAPI</div>
-                    <p>Semantic search engine built on transformer embeddings and an L2-normalized FAISS vector index
-                        (cosine similarity), served through a FastAPI API — with a documented comparison of vector
+                    <p class="en">Semantic search engine built on transformer embeddings and an L2-normalized FAISS vector
+                        index (cosine similarity), served through a FastAPI API — with a documented comparison of vector
                         stores (FAISS / Chroma / Pinecone) and embedding providers.
                         <a href="https://github.com/rogerioc/ai-backend-rag-llm" target="_blank" rel="noopener">View on GitHub →</a></p>
+                    <p class="pt">Motor de busca semântica sobre embeddings de transformer e um índice vetorial FAISS
+                        normalizado em L2 (similaridade de cosseno), servido por uma API FastAPI — com comparação
+                        documentada de vector stores (FAISS / Chroma / Pinecone) e provedores de embedding.
+                        <a href="https://github.com/rogerioc/ai-backend-rag-llm" target="_blank" rel="noopener">Ver no GitHub →</a></p>
                 </div>
                 <div class="card">
-                    <h3>LLM Orchestration Backend</h3>
+                    <h3 class="en">LLM Orchestration Backend</h3>
+                    <h3 class="pt">Back-end de Orquestração de LLM</h3>
                     <div class="stack">LangChain · Gemini · Python</div>
-                    <p>Conversational backend using LangChain with conversation memory, prompt templating, structured
-                        JSON outputs, and typed error handling for production resilience.
+                    <p class="en">Conversational backend using LangChain with conversation memory, prompt templating,
+                        structured JSON outputs, and typed error handling for production resilience.
                         <a href="https://github.com/rogerioc/ai-backend-rag-llm" target="_blank" rel="noopener">View on GitHub →</a></p>
+                    <p class="pt">Back-end conversacional em LangChain com memória de conversa, templating de prompt,
+                        saídas JSON estruturadas e tratamento de erro tipado para resiliência em produção.
+                        <a href="https://github.com/rogerioc/ai-backend-rag-llm" target="_blank" rel="noopener">Ver no GitHub →</a></p>
                 </div>
                 <div class="card">
-                    <h3>Vector-Ranking Reverse Engineering</h3>
+                    <h3 class="en">Vector-Ranking Reverse Engineering</h3>
+                    <h3 class="pt">Engenharia Reversa de Ranking Vetorial</h3>
                     <div class="stack">Python · Applied math</div>
-                    <p>Reverse-engineered an opaque vector-database similarity-ranking function from sample outputs,
-                        deriving its query-normalization factor and penalty constant through systematic mathematical
-                        analysis.
+                    <p class="en">Reverse-engineered an opaque vector-database similarity-ranking function from sample
+                        outputs, deriving its query-normalization factor and penalty constant through systematic
+                        mathematical analysis.
                         <a href="https://github.com/rogerioc/vector-ranking-study" target="_blank" rel="noopener">View on GitHub →</a></p>
+                    <p class="pt">Engenharia reversa de uma função de ranking de banco vetorial opaca a partir de saídas de
+                        exemplo, deduzindo o fator de normalização da query e a constante de penalidade por análise
+                        matemática sistemática.
+                        <a href="https://github.com/rogerioc/vector-ranking-study" target="_blank" rel="noopener">Ver no GitHub →</a></p>
                 </div>
                 <div class="card">
-                    <h3>Hybrid LLM Assistant <span class="badge">private</span></h3>
+                    <h3 class="en">Hybrid LLM Assistant <span class="badge">private</span></h3>
+                    <h3 class="pt">Assistente LLM Híbrido <span class="badge">privado</span></h3>
                     <div class="stack">Gemini · Gemma (on-device) · MediaPipe · Cloud Functions · Prefect</div>
-                    <p>A personal assistant exploring a hybrid cloud + on-device architecture: cloud inference with
-                        structured outputs and multi-source context assembly, plus on-device LLM inference (Gemma 3n via
-                        MediaPipe) in a Jetpack Compose Android client. Demo on request.
+                    <p class="en">A personal assistant exploring a hybrid cloud + on-device architecture: cloud inference
+                        with structured outputs and multi-source context assembly, plus on-device LLM inference (Gemma 3n
+                        via MediaPipe) in a Jetpack Compose Android client. Demo on request.
                         <a href="https://github.com/rogerioc/fortuna-ai-case-study" target="_blank" rel="noopener">View on GitHub →</a></p>
+                    <p class="pt">Assistente pessoal explorando arquitetura híbrida cloud + on-device: inferência na nuvem
+                        com saídas estruturadas e montagem de contexto multi-fonte, além de inferência de LLM on-device
+                        (Gemma 3n via MediaPipe) em app Android Jetpack Compose. Demo sob pedido.
+                        <a href="https://github.com/rogerioc/fortuna-ai-case-study" target="_blank" rel="noopener">Ver no GitHub →</a></p>
                 </div>
                 <div class="card">
-                    <h3>PIX — Instant Payments</h3>
+                    <h3 class="en">PIX — Instant Payments</h3>
+                    <h3 class="pt">PIX — Pagamentos Instantâneos</h3>
                     <div class="stack">iOS · Android · Banking</div>
-                    <p>Contributed to the mobile implementation of PIX, Brazil's national instant-payment system, at
-                        Inter — high-reliability financial software at national scale.</p>
+                    <p class="en">Contributed to the mobile implementation of PIX, Brazil's national instant-payment
+                        system, at Inter — high-reliability financial software at national scale.</p>
+                    <p class="pt">Contribuí na implementação mobile do PIX, o sistema de pagamentos instantâneos do
+                        Brasil, no Inter — software financeiro de alta confiabilidade em escala nacional.</p>
                 </div>
             </div>
         </div>
@@ -443,8 +497,9 @@
     <!-- SKILLS -->
     <section id="skills">
         <div class="wrap">
-            <div class="kicker">Toolkit</div>
-            <h2>Skills</h2>
+            <div class="kicker"><span class="en">Toolkit</span><span class="pt">Ferramentas</span></div>
+            <h2 class="en">Skills</h2>
+            <h2 class="pt">Competências</h2>
             <div class="skillblock">
                 <div class="label">Applied AI &amp; LLMs</div>
                 <div class="chips">
@@ -461,7 +516,7 @@
                 </div>
             </div>
             <div class="skillblock">
-                <div class="label">Machine Learning &amp; Data</div>
+                <div class="label"><span class="en">Machine Learning &amp; Data</span><span class="pt">Machine Learning &amp; Dados</span></div>
                 <div class="chips">
                     <span class="chip hot2">PyTorch</span>
                     <span class="chip hot2">TensorFlow</span>
@@ -470,7 +525,7 @@
                     <span class="chip hot2">Computer Vision (OpenCV)</span>
                     <span class="chip hot2">NLP</span>
                     <span class="chip hot2">Prefect</span>
-                    <span class="chip hot2">Data pipelines</span>
+                    <span class="chip hot2"><span class="en">Data pipelines</span><span class="pt">Pipelines de dados</span></span>
                 </div>
             </div>
             <div class="skillblock">
@@ -495,18 +550,18 @@
                     <span class="chip">Clean Architecture</span>
                     <span class="chip">MVVM / VIP</span>
                     <span class="chip">Server-Driven UI</span>
-                    <span class="chip">Modularization</span>
+                    <span class="chip"><span class="en">Modularization</span><span class="pt">Modularização</span></span>
                     <span class="chip">CI/CD (Bitrise, Fastlane)</span>
                 </div>
             </div>
             <div class="skillblock">
-                <div class="label">Engineering &amp; Leadership</div>
+                <div class="label"><span class="en">Engineering &amp; Leadership</span><span class="pt">Engenharia &amp; Liderança</span></div>
                 <div class="chips">
-                    <span class="chip">Solution architecture</span>
-                    <span class="chip">Technical leadership</span>
-                    <span class="chip">Team building &amp; mentoring</span>
+                    <span class="chip"><span class="en">Solution architecture</span><span class="pt">Arquitetura de soluções</span></span>
+                    <span class="chip"><span class="en">Technical leadership</span><span class="pt">Liderança técnica</span></span>
+                    <span class="chip"><span class="en">Team building &amp; mentoring</span><span class="pt">Formação e mentoria de times</span></span>
                     <span class="chip">Agile / Scrum</span>
-                    <span class="chip">TDD &amp; software quality</span>
+                    <span class="chip"><span class="en">TDD &amp; software quality</span><span class="pt">TDD e qualidade de software</span></span>
                     <span class="chip">R&amp;D</span>
                 </div>
             </div>
@@ -516,68 +571,98 @@
     <!-- EXPERIENCE -->
     <section id="experience">
         <div class="wrap">
-            <div class="kicker">Career</div>
-            <h2>Experience</h2>
+            <div class="kicker"><span class="en">Career</span><span class="pt">Carreira</span></div>
+            <h2 class="en">Experience</h2>
+            <h2 class="pt">Experiência</h2>
             <div class="timeline">
                 <div class="xp">
                     <div class="when">2025 – 2026</div>
                     <div class="what">
-                        <h3>Software Engineer Specialist, Mobile · <span class="org"><a href="https://inter.co" target="_blank" rel="noopener">Inter</a></span></h3>
-                        <p>Led mobile architecture for a payment-terminal product, delivering a lean, purpose-built app
-                            through build flavors, selective dependency exclusion, and product variants with zero code
-                            duplication. Technical leadership on the Server-Driven UI (SDUI) SDK; Kotlin, Swift, NFC,
-                            SoftPOS.</p>
+                        <h3 class="en">Software Engineer Specialist, Mobile · <span class="org"><a href="https://inter.co" target="_blank" rel="noopener">Inter</a></span></h3>
+                        <h3 class="pt">Especialista em Engenharia de Software, Mobile · <span class="org"><a href="https://inter.co" target="_blank" rel="noopener">Inter</a></span></h3>
+                        <p class="en">Led mobile architecture for a payment-terminal product, delivering a lean,
+                            purpose-built app through build flavors, selective dependency exclusion, and product variants
+                            with zero code duplication. Technical leadership on the Server-Driven UI (SDUI) SDK; Kotlin,
+                            Swift, NFC, SoftPOS.</p>
+                        <p class="pt">Liderei a arquitetura mobile de um produto para terminal de pagamento, entregando um
+                            app enxuto e sob medida via build flavors, exclusão seletiva de dependências e product
+                            variants, com zero duplicação de código. Liderança técnica no SDK de Server-Driven UI (SDUI);
+                            Kotlin, Swift, NFC, SoftPOS.</p>
                     </div>
                 </div>
                 <div class="xp">
                     <div class="when">2022 – 2025</div>
                     <div class="what">
-                        <h3>Mobile Engineer / Tech Lead · <span class="org"><a href="https://www.getninjas.com.br" target="_blank" rel="noopener">GetNinjas</a></span></h3>
-                        <p>Led squad technical direction, solution architecture, and strategic mobile planning. Drove
-                            reliability and scaling — high crash-free rates — integrating AWS, Firebase, Salesforce CMS,
-                            and attribution platforms. Delivered iOS features in Swift with Clean Architecture, VIP,
+                        <h3 class="en">Mobile Engineer / Tech Lead · <span class="org"><a href="https://www.getninjas.com.br" target="_blank" rel="noopener">GetNinjas</a></span></h3>
+                        <h3 class="pt">Engenheiro Mobile / Tech Lead · <span class="org"><a href="https://www.getninjas.com.br" target="_blank" rel="noopener">GetNinjas</a></span></h3>
+                        <p class="en">Led squad technical direction, solution architecture, and strategic mobile planning.
+                            Drove reliability and scaling — high crash-free rates — integrating AWS, Firebase, Salesforce
+                            CMS, and attribution platforms. Delivered iOS features in Swift with Clean Architecture, VIP,
                             modularization, and CI/CD; mentored the team.</p>
+                        <p class="pt">Conduzi a direção técnica do squad, a arquitetura de soluções e o planejamento
+                            estratégico mobile. Elevei confiabilidade e escala — altas taxas de crash-free — integrando
+                            AWS, Firebase, CMS Salesforce e plataformas de atribuição. Entreguei features iOS em Swift com
+                            Clean Architecture, VIP, modularização e CI/CD; mentorei o time.</p>
                     </div>
                 </div>
                 <div class="xp">
                     <div class="when">2021 – 2022</div>
                     <div class="what">
-                        <h3>Mobile Specialist · <span class="org"><a href="https://zup.com.br" target="_blank" rel="noopener">Zup Innovation</a></span></h3>
-                        <p>Architected Android and iOS solutions, delivering clean, well-designed code in small functional
-                            increments and driving key implementation decisions.</p>
+                        <h3 class="en">Mobile Specialist · <span class="org"><a href="https://zup.com.br" target="_blank" rel="noopener">Zup Innovation</a></span></h3>
+                        <h3 class="pt">Especialista Mobile · <span class="org"><a href="https://zup.com.br" target="_blank" rel="noopener">Zup Innovation</a></span></h3>
+                        <p class="en">Architected Android and iOS solutions, delivering clean, well-designed code in small
+                            functional increments and driving key implementation decisions.</p>
+                        <p class="pt">Arquitetei soluções Android e iOS, entregando código limpo em incrementos funcionais
+                            e conduzindo decisões-chave de implementação.</p>
                     </div>
                 </div>
                 <div class="xp">
                     <div class="when">2020 – 2021</div>
                     <div class="what">
-                        <h3>iOS Specialist · <span class="org"><a href="https://warren.com.br" target="_blank" rel="noopener">Warren Brasil</a></span></h3>
-                        <p>Built and maintained features in Swift and SwiftUI applying modern architectures (MVVM, The
-                            Composable Architecture) with a strong unit-testing focus.</p>
+                        <h3 class="en">iOS Specialist · <span class="org"><a href="https://warren.com.br" target="_blank" rel="noopener">Warren Brasil</a></span></h3>
+                        <h3 class="pt">Especialista iOS · <span class="org"><a href="https://warren.com.br" target="_blank" rel="noopener">Warren Brasil</a></span></h3>
+                        <p class="en">Built and maintained features in Swift and SwiftUI applying modern architectures
+                            (MVVM, The Composable Architecture) with a strong unit-testing focus.</p>
+                        <p class="pt">Construí e mantive features em Swift e SwiftUI com arquiteturas modernas (MVVM, The
+                            Composable Architecture) e forte foco em testes unitários.</p>
                     </div>
                 </div>
                 <div class="xp">
                     <div class="when">2019 – 2020</div>
                     <div class="what">
-                        <h3>Mobile Solutions Architect / iOS Tech Lead · <span class="org"><a href="https://inter.co" target="_blank" rel="noopener">Inter</a></span></h3>
-                        <p>Led the iOS team and architected Android, iOS, and back-end solutions; owned the Inter Empresas
-                            app and contributed to PIX. Built a WebView micro-framework to accelerate feature delivery
-                            across native platforms.</p>
+                        <h3 class="en">Mobile Solutions Architect / iOS Tech Lead · <span class="org"><a href="https://inter.co" target="_blank" rel="noopener">Inter</a></span></h3>
+                        <h3 class="pt">Arquiteto de Soluções Mobile / Tech Lead iOS · <span class="org"><a href="https://inter.co" target="_blank" rel="noopener">Inter</a></span></h3>
+                        <p class="en">Led the iOS team and architected Android, iOS, and back-end solutions; owned the
+                            Inter Empresas app and contributed to PIX. Built a WebView micro-framework to accelerate
+                            feature delivery across native platforms.</p>
+                        <p class="pt">Liderei o time iOS e arquitetei soluções Android, iOS e back-end; responsável pelo
+                            app Inter Empresas e contribuí no PIX. Criei um micro-framework WebView para acelerar a
+                            entrega de features nas plataformas nativas.</p>
                     </div>
                 </div>
                 <div class="xp">
                     <div class="when">2018 – 2019</div>
                     <div class="what">
-                        <h3>Senior Mobile Software Engineer · <span class="org"><a href="https://www.maxmilhas.com.br" target="_blank" rel="noopener">MaxMilhas</a></span></h3>
-                        <p>Developed native Android (Kotlin/Java) and iOS (Swift/Objective-C) apps with reactive
+                        <h3 class="en">Senior Mobile Software Engineer · <span class="org"><a href="https://www.maxmilhas.com.br" target="_blank" rel="noopener">MaxMilhas</a></span></h3>
+                        <h3 class="pt">Engenheiro de Software Mobile Sênior · <span class="org"><a href="https://www.maxmilhas.com.br" target="_blank" rel="noopener">MaxMilhas</a></span></h3>
+                        <p class="en">Developed native Android (Kotlin/Java) and iOS (Swift/Objective-C) apps with reactive
                             programming (Rx). Served as technical reference and stepped in as Tech Lead within six months.
                             The app drove 20%+ of ticket sales.</p>
+                        <p class="pt">Desenvolvi apps nativos Android (Kotlin/Java) e iOS (Swift/Objective-C) com
+                            programação reativa (Rx). Fui referência técnica e assumi como Tech Lead em menos de seis
+                            meses. O app representava mais de 20% das vendas de passagens.</p>
                     </div>
                 </div>
             </div>
-            <p class="muted-note"><strong style="color:var(--ink)">Earlier (2003–2018):</strong> Mobile Tech Lead @
-                Samba Tech (built the mobile team from scratch) · CNPq R&amp;D Researcher @ Netbee (Intelligent
-                Transport Systems, MQTT) · University Professor at PUC Minas, CEFET-MG and UniBH (mobile architecture,
-                data structures, 3D programming) · Engineer at Stefanini, TACOM, Pontomobi, Avenue Code · QA at
+            <p class="muted-note en"><strong style="color:var(--ink)">Earlier (2003–2018):</strong> Mobile Tech Lead @
+                Samba Tech (built the mobile team from scratch) · CNPq R&amp;D Researcher @ Netbee (Intelligent Transport
+                Systems, MQTT) · University Professor at PUC Minas, CEFET-MG and UniBH (mobile architecture, data
+                structures, 3D programming) · Engineer at Stefanini, TACOM, Pontomobi, Avenue Code · QA at
+                CIn/Motorola-UFPE.</p>
+            <p class="muted-note pt"><strong style="color:var(--ink)">Anteriores (2003–2018):</strong> Mobile Tech Lead @
+                Samba Tech (montou o time mobile do zero) · Pesquisador P&amp;D CNPq @ Netbee (Sistemas de Transporte
+                Inteligente, MQTT) · Professor universitário na PUC Minas, CEFET-MG e UniBH (arquitetura mobile,
+                estruturas de dados, programação 3D) · Engenheiro na Stefanini, TACOM, Pontomobi, Avenue Code · QA no
                 CIn/Motorola-UFPE.</p>
         </div>
     </section>
@@ -585,39 +670,49 @@
     <!-- EDUCATION -->
     <section id="education">
         <div class="wrap">
-            <div class="kicker">Academic</div>
-            <h2>Education</h2>
+            <div class="kicker"><span class="en">Academic</span><span class="pt">Acadêmico</span></div>
+            <h2 class="en">Education</h2>
+            <h2 class="pt">Formação</h2>
             <div class="row">
                 <div>
-                    <div class="t">AI Data Engineer 4.0 (professional program)</div>
-                    <div class="s">Data Science Academy — LLM data pipelines, embeddings &amp; vector DBs, RAG / GraphRAG / Agentic RAG, ETL for unstructured data (516h)</div>
+                    <div class="t en">AI Data Engineer 4.0 (professional program)</div>
+                    <div class="t pt">AI Data Engineer 4.0 (formação)</div>
+                    <div class="s en">Data Science Academy — LLM data pipelines, embeddings &amp; vector DBs, RAG / GraphRAG / Agentic RAG, ETL for unstructured data (516h)</div>
+                    <div class="s pt">Data Science Academy — pipelines de dados para LLM, embeddings e bancos vetoriais, RAG / GraphRAG / Agentic RAG, ETL para dados não estruturados (516h)</div>
                 </div>
-                <div class="yr">2026 – in progress</div>
+                <div class="yr"><span class="en">2026 – in progress</span><span class="pt">2026 – em curso</span></div>
             </div>
             <div class="row">
                 <div>
-                    <div class="t">Postgraduate Program in AI Engineering (Lato Sensu)</div>
-                    <div class="s">Data Science Academy — MEC-recognized specialist degree · Machine Learning, Deep Learning &amp; applied AI engineering (384h)</div>
+                    <div class="t en">Postgraduate Program in AI Engineering (Lato Sensu)</div>
+                    <div class="t pt">Pós-graduação em Engenharia de Inteligência Artificial (Lato Sensu)</div>
+                    <div class="s en">Data Science Academy — MEC-recognized specialist degree · Machine Learning, Deep Learning &amp; applied AI engineering (384h)</div>
+                    <div class="s pt">Data Science Academy — reconhecida pelo MEC, título de especialista · Machine Learning, Deep Learning e engenharia de IA aplicada (384h)</div>
                 </div>
                 <div class="yr">2025 – 2025</div>
             </div>
             <div class="row">
                 <div>
-                    <div class="t">MSc, Software Engineering</div>
-                    <div class="s">PUC Minas — software product lines, feature- &amp; aspect-oriented programming</div>
+                    <div class="t en">MSc, Software Engineering</div>
+                    <div class="t pt">Mestrado em Engenharia de Software</div>
+                    <div class="s en">PUC Minas — software product lines, feature- &amp; aspect-oriented programming</div>
+                    <div class="s pt">PUC Minas — linhas de produto de software, programação orientada a features e a aspectos</div>
                 </div>
                 <div class="yr">2007 – 2009</div>
             </div>
             <div class="row">
                 <div>
-                    <div class="t">Specialization, Software Test Engineering</div>
-                    <div class="s">CIn / UFPE — Motorola partnership</div>
+                    <div class="t en">Specialization, Software Test Engineering</div>
+                    <div class="t pt">Especialização em Engenharia de Teste de Software</div>
+                    <div class="s en">CIn / UFPE — Motorola partnership</div>
+                    <div class="s pt">CIn / UFPE — parceria Motorola</div>
                 </div>
                 <div class="yr">2006</div>
             </div>
             <div class="row">
                 <div>
-                    <div class="t">BSc, Information Systems</div>
+                    <div class="t en">BSc, Information Systems</div>
+                    <div class="t pt">Bacharelado em Sistemas de Informação</div>
                     <div class="s">PUC Minas</div>
                 </div>
                 <div class="yr">2002 – 2005</div>
@@ -628,8 +723,9 @@
     <!-- PUBLICATIONS -->
     <section id="publications">
         <div class="wrap">
-            <div class="kicker">Research</div>
-            <h2>Publications</h2>
+            <div class="kicker"><span class="en">Research</span><span class="pt">Pesquisa</span></div>
+            <h2 class="en">Publications</h2>
+            <h2 class="pt">Publicações</h2>
             <div class="pub">
                 <div class="t"><a href="https://www.sbgames.org/papers/sbgames08/computingtrack/short/cts22_08.pdf"
                         target="_blank" rel="noopener">A Preliminary Comparison of Technologies for Implementing
@@ -660,10 +756,13 @@
     <!-- CONTACT -->
     <section id="contact" style="border-bottom:none">
         <div class="wrap">
-            <div class="kicker">Get in touch</div>
-            <h2>Let's talk AI engineering</h2>
-            <p class="s" style="color:var(--muted); max-width:640px">Open to Applied AI / AI Engineer roles. Based in
+            <div class="kicker"><span class="en">Get in touch</span><span class="pt">Contato</span></div>
+            <h2 class="en">Let's talk AI engineering</h2>
+            <h2 class="pt">Vamos falar de engenharia de IA</h2>
+            <p class="en" style="color:var(--muted); max-width:640px">Open to Applied AI / AI Engineer roles. Based in
                 Belo Horizonte, Brazil — available remote.</p>
+            <p class="pt" style="color:var(--muted); max-width:640px">Aberto a vagas de Applied AI / AI Engineer. Baseado
+                em Belo Horizonte, Brasil — disponível para remoto.</p>
             <div class="contact-grid">
                 <a href="https://www.linkedin.com/in/rogeriocs/" target="_blank" rel="noopener">in/rogeriocs</a>
                 <a href="https://github.com/rogerioc" target="_blank" rel="noopener">github.com/rogerioc</a>
@@ -674,6 +773,23 @@
     <footer>© 2025–2026 Rogério Celestino · Belo Horizonte, Brazil</footer>
 
     <script>
+        // language toggle
+        (function () {
+            const html = document.documentElement;
+            const btns = document.querySelectorAll('[data-set-lang]');
+            function apply(l) {
+                html.setAttribute('data-lang', l);
+                html.setAttribute('lang', l === 'pt' ? 'pt-BR' : 'en');
+                btns.forEach(b => b.classList.toggle('active', b.getAttribute('data-set-lang') === l));
+                try { localStorage.setItem('lang', l); } catch (e) {}
+            }
+            let saved = 'en';
+            try { saved = localStorage.getItem('lang') || 'en'; } catch (e) {}
+            apply(saved === 'pt' ? 'pt' : 'en');
+            btns.forEach(b => b.addEventListener('click', () => apply(b.getAttribute('data-set-lang'))));
+        })();
+
+        // reveal animations
         const sections = document.querySelectorAll('section');
         const cards = document.querySelectorAll('.card');
         const xpItems = document.querySelectorAll('.xp');
