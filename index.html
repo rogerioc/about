@@ -7,6 +7,8 @@
     <title>Rogério Celestino — Applied AI Engineer</title>
     <meta name="description"
         content="Rogério Celestino — Applied AI Engineer. LLM applications, RAG and on-device ML, built on 20+ years of production software engineering. MSc Software Engineering." />
+    <!-- Umami Analytics -->
+    <script defer src="https://umami-alpha-flame.vercel.app/script.js" data-website-id="e2642339-8790-4ad8-b83b-bdf9991f0f7c"></script>
     <style>
         :root {
             --bg: #0d1117;
@@ -320,18 +322,18 @@
             <div class="brand">Rogério <span>Celestino</span></div>
             <div class="nav-right">
                 <nav class="nav-links">
-                    <a href="#about"><span class="en">About</span><span class="pt">Sobre</span></a>
-                    <a href="#projects"><span class="en">Projects</span><span class="pt">Projetos</span></a>
-                    <a href="#skills"><span class="en">Skills</span><span class="pt">Competências</span></a>
-                    <a href="#experience"><span class="en">Experience</span><span class="pt">Experiência</span></a>
-                    <a href="#education"><span class="en">Education</span><span class="pt">Formação</span></a>
-                    <a href="#contact"><span class="en">Contact</span><span class="pt">Contato</span></a>
-                    <a class="en" href="CV_Rogerio_Celestino_EN.pdf" target="_blank" rel="noopener" style="color:var(--accent)">CV ↗</a>
-                    <a class="pt" href="CV_Rogerio_Celestino_PT.pdf" target="_blank" rel="noopener" style="color:var(--accent)">CV ↗</a>
+                    <a href="#about" data-umami-event="Nav Click" data-umami-event-section="about"><span class="en">About</span><span class="pt">Sobre</span></a>
+                    <a href="#projects" data-umami-event="Nav Click" data-umami-event-section="projects"><span class="en">Projects</span><span class="pt">Projetos</span></a>
+                    <a href="#skills" data-umami-event="Nav Click" data-umami-event-section="skills"><span class="en">Skills</span><span class="pt">Competências</span></a>
+                    <a href="#experience" data-umami-event="Nav Click" data-umami-event-section="experience"><span class="en">Experience</span><span class="pt">Experiência</span></a>
+                    <a href="#education" data-umami-event="Nav Click" data-umami-event-section="education"><span class="en">Education</span><span class="pt">Formação</span></a>
+                    <a href="#contact" data-umami-event="Nav Click" data-umami-event-section="contact"><span class="en">Contact</span><span class="pt">Contato</span></a>
+                    <a class="en" href="CV_Rogerio_Celestino_EN.pdf" target="_blank" rel="noopener" style="color:var(--accent)" data-umami-event="Download CV" data-umami-event-lang="en" data-umami-event-location="nav">CV ↗</a>
+                    <a class="pt" href="CV_Rogerio_Celestino_PT.pdf" target="_blank" rel="noopener" style="color:var(--accent)" data-umami-event="Download CV" data-umami-event-lang="pt" data-umami-event-location="nav">CV ↗</a>
                 </nav>
                 <div class="lang-switch" role="group" aria-label="Language">
-                    <button data-set-lang="pt">PT</button>
-                    <button data-set-lang="en">EN</button>
+                    <button data-set-lang="pt" data-umami-event="Switch Language" data-umami-event-lang="pt">PT</button>
+                    <button data-set-lang="en" data-umami-event="Switch Language" data-umami-event-lang="en">EN</button>
                 </div>
             </div>
         </div>
@@ -352,11 +354,11 @@
                 que transformam modelos em produtos reais. Mestre em Engenharia de Software · 5 publicações revisadas por
                 pares.</p>
             <div class="cta">
-                <a class="btn primary" href="#projects"><span class="en">View projects</span><span class="pt">Ver projetos</span></a>
-                <a class="btn ghost en" href="CV_Rogerio_Celestino_EN.pdf" target="_blank" rel="noopener">📄 Resume (PDF) ↗</a>
-                <a class="btn ghost pt" href="CV_Rogerio_Celestino_PT.pdf" target="_blank" rel="noopener">📄 Currículo (PDF) ↗</a>
-                <a class="btn ghost" href="https://www.linkedin.com/in/rogeriocs/" target="_blank" rel="noopener">LinkedIn</a>
-                <a class="btn ghost" href="https://github.com/rogerioc" target="_blank" rel="noopener">GitHub</a>
+                <a class="btn primary" href="#projects" data-umami-event="Hero View Projects"><span class="en">View projects</span><span class="pt">Ver projetos</span></a>
+                <a class="btn ghost en" href="CV_Rogerio_Celestino_EN.pdf" target="_blank" rel="noopener" data-umami-event="Download CV" data-umami-event-lang="en" data-umami-event-location="hero">📄 Resume (PDF) ↗</a>
+                <a class="btn ghost pt" href="CV_Rogerio_Celestino_PT.pdf" target="_blank" rel="noopener" data-umami-event="Download CV" data-umami-event-lang="pt" data-umami-event-location="hero">📄 Currículo (PDF) ↗</a>
+                <a class="btn ghost" href="https://www.linkedin.com/in/rogeriocs/" target="_blank" rel="noopener" data-umami-event="Social Link" data-umami-event-network="linkedin" data-umami-event-location="hero">LinkedIn</a>
+                <a class="btn ghost" href="https://github.com/rogerioc" target="_blank" rel="noopener" data-umami-event="Social Link" data-umami-event-network="github" data-umami-event-location="hero">GitHub</a>
             </div>
         </div>
     </div>
@@ -410,11 +412,11 @@
                     <h3 class="pt">Duo Concierge &amp; Servidor FastMCP <span class="badge">demo online</span></h3>
                     <div class="stack">Gemini · FastMCP (Model Context Protocol) · Streamlit · Haversine</div>
                     <p class="en">Conversational recommendation agent and custom FastMCP server: an LLM equipped with geospatial Haversine filtering and real-time benefit availability checks over 1,200+ restaurants, deployed live on Streamlit with an MCP interface for agents.
-                        <a href="https://github.com/rogerioc/my-duogourmet-concierge-agent" target="_blank" rel="noopener">Code →</a> ·
-                        <a class="demo" href="https://rcs-duogourmet-concierge.streamlit.app/" target="_blank" rel="noopener">Live demo →</a></p>
+                        <a href="https://github.com/rogerioc/my-duogourmet-concierge-agent" target="_blank" rel="noopener" data-umami-event="Project Code" data-umami-event-project="duo-concierge">Code →</a> ·
+                        <a class="demo" href="https://rcs-duogourmet-concierge.streamlit.app/" target="_blank" rel="noopener" data-umami-event="Project Demo" data-umami-event-project="duo-concierge">Live demo →</a></p>
                     <p class="pt">Agente conversacional de recomendação e servidor FastMCP: um LLM com ferramentas próprias (filtro geoespacial Haversine, checagem de horários e regras) sobre 1.200+ restaurantes, publicado no Streamlit com interface MCP para agentes.
-                        <a href="https://github.com/rogerioc/my-duogourmet-concierge-agent" target="_blank" rel="noopener">Código →</a> ·
-                        <a class="demo" href="https://rcs-duogourmet-concierge.streamlit.app/" target="_blank" rel="noopener">Demo online →</a></p>
+                        <a href="https://github.com/rogerioc/my-duogourmet-concierge-agent" target="_blank" rel="noopener" data-umami-event="Project Code" data-umami-event-project="duo-concierge">Código →</a> ·
+                        <a class="demo" href="https://rcs-duogourmet-concierge.streamlit.app/" target="_blank" rel="noopener" data-umami-event="Project Demo" data-umami-event-project="duo-concierge">Demo online →</a></p>
                 </div>
                 <div class="card">
                     <h3 class="en">AI Agents Engineering Guide <span class="badge">authored</span></h3>
@@ -423,29 +425,29 @@
                     <p class="en">An open technical guide I'm writing on production agent engineering: ReAct &amp;
                         multi-agent orchestration, context engineering, evaluation (LLM-as-a-Judge, DeepEval),
                         observability (Langfuse), and advanced / Graph / Agentic RAG (Neo4j, LlamaIndex).
-                        <a href="https://github.com/rogerioc/ai-agents-engineering-guide" target="_blank" rel="noopener">Read →</a></p>
+                        <a href="https://github.com/rogerioc/ai-agents-engineering-guide" target="_blank" rel="noopener" data-umami-event="Project Code" data-umami-event-project="ai-agents-guide">Read →</a></p>
                     <p class="pt">Guia técnico aberto que estou escrevendo sobre agentes em produção: ReAct e orquestração
                         multi-agente, engenharia de contexto, avaliação (LLM-as-a-Judge, DeepEval), observabilidade
                         (Langfuse) e RAG avançado / Graph / Agentic (Neo4j, LlamaIndex).
-                        <a href="https://github.com/rogerioc/ai-agents-engineering-guide" target="_blank" rel="noopener">Ler →</a></p>
+                        <a href="https://github.com/rogerioc/ai-agents-engineering-guide" target="_blank" rel="noopener" data-umami-event="Project Code" data-umami-event-project="ai-agents-guide">Ler →</a></p>
                 </div>
                 <div class="card">
                     <h3 class="en">Awesome AI &amp; Open Source Arsenal <span class="badge">open source</span></h3>
                     <h3 class="pt">Awesome AI &amp; Open Source Arsenal <span class="badge">open source</span></h3>
                     <div class="stack">AI Agents · Local LLMs · DevTools · Automation</div>
                     <p class="en">Curated directory of 407+ cutting-edge open-source tools for AI builders and autonomous agents: local inference (Ollama, vLLM), scraping, vision, multi-agent teams, and self-hosted workflows, structured with ready prompts.
-                        <a href="https://github.com/rogerioc/awesome-ai-arsenal" target="_blank" rel="noopener">View on GitHub →</a></p>
+                        <a href="https://github.com/rogerioc/awesome-ai-arsenal" target="_blank" rel="noopener" data-umami-event="Project Code" data-umami-event-project="awesome-ai-arsenal">View on GitHub →</a></p>
                     <p class="pt">Curadoria auditada com 407+ ferramentas open-source de ponta para builders e agentes autônomos: inferência local (Ollama, vLLM), scraping, visão computacional, equipes multi-agente e self-hosting, estruturado com prompts prontos.
-                        <a href="https://github.com/rogerioc/awesome-ai-arsenal" target="_blank" rel="noopener">Ver no GitHub →</a></p>
+                        <a href="https://github.com/rogerioc/awesome-ai-arsenal" target="_blank" rel="noopener" data-umami-event="Project Code" data-umami-event-project="awesome-ai-arsenal">Ver no GitHub →</a></p>
                 </div>
                 <div class="card">
                     <h3 class="en">AI Backend — RAG, LLM Orchestration &amp; API</h3>
                     <h3 class="pt">AI Backend — RAG, Orquestração de LLM &amp; API</h3>
                     <div class="stack">Python · FastAPI · FAISS · LangChain · Gemini</div>
                     <p class="en">Complete AI service: semantic search engine with L2-normalized FAISS vector index, LangChain conversational assistant with memory and structured outputs, served through a fully tested FastAPI API with documented trade-offs.
-                        <a href="https://github.com/rogerioc/ai-backend-rag-llm" target="_blank" rel="noopener">View on GitHub →</a></p>
+                        <a href="https://github.com/rogerioc/ai-backend-rag-llm" target="_blank" rel="noopener" data-umami-event="Project Code" data-umami-event-project="ai-backend-rag-llm">View on GitHub →</a></p>
                     <p class="pt">Serviço de IA completo: motor de busca semântica sobre índice FAISS normalizado em L2, assistente conversacional LangChain com memória e saídas estruturadas, servido por API FastAPI testada com decisões técnicas documentadas.
-                        <a href="https://github.com/rogerioc/ai-backend-rag-llm" target="_blank" rel="noopener">Ver no GitHub →</a></p>
+                        <a href="https://github.com/rogerioc/ai-backend-rag-llm" target="_blank" rel="noopener" data-umami-event="Project Code" data-umami-event-project="ai-backend-rag-llm">Ver no GitHub →</a></p>
                 </div>
                 <div class="card">
                     <h3 class="en">Vector-Ranking Reverse Engineering</h3>
@@ -454,11 +456,11 @@
                     <p class="en">Reverse-engineered an opaque vector-database similarity-ranking function from sample
                         outputs, deriving its query-normalization factor and penalty constant through systematic
                         mathematical analysis.
-                        <a href="https://github.com/rogerioc/vector-ranking-study" target="_blank" rel="noopener">View on GitHub →</a></p>
+                        <a href="https://github.com/rogerioc/vector-ranking-study" target="_blank" rel="noopener" data-umami-event="Project Code" data-umami-event-project="vector-ranking-study">View on GitHub →</a></p>
                     <p class="pt">Engenharia reversa de uma função de ranking de banco vetorial opaca a partir de saídas de
                         exemplo, deduzindo o fator de normalização da query e a constante de penalidade por análise
                         matemática sistemática.
-                        <a href="https://github.com/rogerioc/vector-ranking-study" target="_blank" rel="noopener">Ver no GitHub →</a></p>
+                        <a href="https://github.com/rogerioc/vector-ranking-study" target="_blank" rel="noopener" data-umami-event="Project Code" data-umami-event-project="vector-ranking-study">Ver no GitHub →</a></p>
                 </div>
                 <div class="card">
                     <h3 class="en">Hybrid LLM Assistant <span class="badge">private</span></h3>
@@ -467,11 +469,11 @@
                     <p class="en">A personal assistant exploring a hybrid cloud + on-device architecture: cloud inference
                         with structured outputs and multi-source context assembly, plus on-device LLM inference (Gemma 3n
                         via MediaPipe) in a Jetpack Compose Android client. Demo on request.
-                        <a href="https://github.com/rogerioc/fortuna-ai-case-study" target="_blank" rel="noopener">View on GitHub →</a></p>
+                        <a href="https://github.com/rogerioc/fortuna-ai-case-study" target="_blank" rel="noopener" data-umami-event="Project Code" data-umami-event-project="fortuna-ai-case-study">View on GitHub →</a></p>
                     <p class="pt">Assistente pessoal explorando arquitetura híbrida cloud + on-device: inferência na nuvem
                         com saídas estruturadas e montagem de contexto multi-fonte, além de inferência de LLM on-device
                         (Gemma 3n via MediaPipe) em app Android Jetpack Compose. Demo sob pedido.
-                        <a href="https://github.com/rogerioc/fortuna-ai-case-study" target="_blank" rel="noopener">Ver no GitHub →</a></p>
+                        <a href="https://github.com/rogerioc/fortuna-ai-case-study" target="_blank" rel="noopener" data-umami-event="Project Code" data-umami-event-project="fortuna-ai-case-study">Ver no GitHub →</a></p>
                 </div>
             </div>
         </div>
@@ -571,8 +573,8 @@
                 <div class="xp">
                     <div class="when">2025 – 2026</div>
                     <div class="what">
-                        <h3 class="en">Software Engineer Specialist, Mobile · <span class="org"><a href="https://inter.co" target="_blank" rel="noopener">Inter</a></span></h3>
-                        <h3 class="pt">Especialista em Engenharia de Software, Mobile · <span class="org"><a href="https://inter.co" target="_blank" rel="noopener">Inter</a></span></h3>
+                        <h3 class="en">Software Engineer Specialist, Mobile · <span class="org"><a href="https://inter.co" target="_blank" rel="noopener" data-umami-event="Company Link" data-umami-event-company="Inter">Inter</a></span></h3>
+                        <h3 class="pt">Especialista em Engenharia de Software, Mobile · <span class="org"><a href="https://inter.co" target="_blank" rel="noopener" data-umami-event="Company Link" data-umami-event-company="Inter">Inter</a></span></h3>
                         <p class="en">Led mobile architecture for a payment-terminal product, delivering a lean,
                             purpose-built app through build flavors, selective dependency exclusion, and product variants
                             with zero code duplication. Technical leadership on the Server-Driven UI (SDUI) SDK; Kotlin,
@@ -586,8 +588,8 @@
                 <div class="xp">
                     <div class="when">2022 – 2025</div>
                     <div class="what">
-                        <h3 class="en">Mobile Engineer / Tech Lead · <span class="org"><a href="https://www.getninjas.com.br" target="_blank" rel="noopener">GetNinjas</a></span></h3>
-                        <h3 class="pt">Engenheiro Mobile / Tech Lead · <span class="org"><a href="https://www.getninjas.com.br" target="_blank" rel="noopener">GetNinjas</a></span></h3>
+                        <h3 class="en">Mobile Engineer / Tech Lead · <span class="org"><a href="https://www.getninjas.com.br" target="_blank" rel="noopener" data-umami-event="Company Link" data-umami-event-company="GetNinjas">GetNinjas</a></span></h3>
+                        <h3 class="pt">Engenheiro Mobile / Tech Lead · <span class="org"><a href="https://www.getninjas.com.br" target="_blank" rel="noopener" data-umami-event="Company Link" data-umami-event-company="GetNinjas">GetNinjas</a></span></h3>
                         <p class="en">Led squad technical direction, solution architecture, and strategic mobile planning.
                             Drove reliability and scaling — high crash-free rates — integrating AWS, Firebase, Salesforce
                             CMS, and attribution platforms. Delivered iOS features in Swift with Clean Architecture, VIP,
@@ -601,8 +603,8 @@
                 <div class="xp">
                     <div class="when">2021 – 2022</div>
                     <div class="what">
-                        <h3 class="en">Mobile Specialist · <span class="org"><a href="https://zup.com.br" target="_blank" rel="noopener">Zup Innovation</a></span></h3>
-                        <h3 class="pt">Especialista Mobile · <span class="org"><a href="https://zup.com.br" target="_blank" rel="noopener">Zup Innovation</a></span></h3>
+                        <h3 class="en">Mobile Specialist · <span class="org"><a href="https://zup.com.br" target="_blank" rel="noopener" data-umami-event="Company Link" data-umami-event-company="Zup Innovation">Zup Innovation</a></span></h3>
+                        <h3 class="pt">Especialista Mobile · <span class="org"><a href="https://zup.com.br" target="_blank" rel="noopener" data-umami-event="Company Link" data-umami-event-company="Zup Innovation">Zup Innovation</a></span></h3>
                         <p class="en">Architected Android and iOS solutions, delivering clean, well-designed code in small
                             functional increments and driving key implementation decisions.</p>
                         <p class="pt">Arquitetei soluções Android e iOS, entregando código limpo em incrementos funcionais
@@ -612,8 +614,8 @@
                 <div class="xp">
                     <div class="when">2020 – 2021</div>
                     <div class="what">
-                        <h3 class="en">iOS Specialist · <span class="org"><a href="https://warren.com.br" target="_blank" rel="noopener">Warren Brasil</a></span></h3>
-                        <h3 class="pt">Especialista iOS · <span class="org"><a href="https://warren.com.br" target="_blank" rel="noopener">Warren Brasil</a></span></h3>
+                        <h3 class="en">iOS Specialist · <span class="org"><a href="https://warren.com.br" target="_blank" rel="noopener" data-umami-event="Company Link" data-umami-event-company="Warren Brasil">Warren Brasil</a></span></h3>
+                        <h3 class="pt">Especialista iOS · <span class="org"><a href="https://warren.com.br" target="_blank" rel="noopener" data-umami-event="Company Link" data-umami-event-company="Warren Brasil">Warren Brasil</a></span></h3>
                         <p class="en">Built and maintained features in Swift and SwiftUI applying modern architectures
                             (MVVM, The Composable Architecture) with a strong unit-testing focus.</p>
                         <p class="pt">Construí e mantive features em Swift e SwiftUI com arquiteturas modernas (MVVM, The
@@ -623,8 +625,8 @@
                 <div class="xp">
                     <div class="when">2019 – 2020</div>
                     <div class="what">
-                        <h3 class="en">Mobile Solutions Architect / iOS Tech Lead · <span class="org"><a href="https://inter.co" target="_blank" rel="noopener">Inter</a></span></h3>
-                        <h3 class="pt">Arquiteto de Soluções Mobile / Tech Lead iOS · <span class="org"><a href="https://inter.co" target="_blank" rel="noopener">Inter</a></span></h3>
+                        <h3 class="en">Mobile Solutions Architect / iOS Tech Lead · <span class="org"><a href="https://inter.co" target="_blank" rel="noopener" data-umami-event="Company Link" data-umami-event-company="Inter">Inter</a></span></h3>
+                        <h3 class="pt">Arquiteto de Soluções Mobile / Tech Lead iOS · <span class="org"><a href="https://inter.co" target="_blank" rel="noopener" data-umami-event="Company Link" data-umami-event-company="Inter">Inter</a></span></h3>
                         <p class="en">Led the iOS team and architected Android, iOS, and back-end solutions; owned the
                             Inter Empresas app and contributed to PIX. Built a WebView micro-framework to accelerate
                             feature delivery across native platforms.</p>
@@ -636,8 +638,8 @@
                 <div class="xp">
                     <div class="when">2018 – 2019</div>
                     <div class="what">
-                        <h3 class="en">Senior Mobile Software Engineer · <span class="org"><a href="https://www.maxmilhas.com.br" target="_blank" rel="noopener">MaxMilhas</a></span></h3>
-                        <h3 class="pt">Engenheiro de Software Mobile Sênior · <span class="org"><a href="https://www.maxmilhas.com.br" target="_blank" rel="noopener">MaxMilhas</a></span></h3>
+                        <h3 class="en">Senior Mobile Software Engineer · <span class="org"><a href="https://www.maxmilhas.com.br" target="_blank" rel="noopener" data-umami-event="Company Link" data-umami-event-company="MaxMilhas">MaxMilhas</a></span></h3>
+                        <h3 class="pt">Engenheiro de Software Mobile Sênior · <span class="org"><a href="https://www.maxmilhas.com.br" target="_blank" rel="noopener" data-umami-event="Company Link" data-umami-event-company="MaxMilhas">MaxMilhas</a></span></h3>
                         <p class="en">Developed native Android (Kotlin/Java) and iOS (Swift/Objective-C) apps with reactive
                             programming (Rx). Served as technical reference and stepped in as Tech Lead within six months.
                             The app drove 20%+ of ticket sales.</p>
@@ -762,7 +764,7 @@
             <h2 class="pt">Publicações</h2>
             <div class="pub">
                 <div class="t"><a href="https://www.sbgames.org/papers/sbgames08/computingtrack/short/cts22_08.pdf"
-                        target="_blank" rel="noopener">A Preliminary Comparison of Technologies for Implementing
+                        target="_blank" rel="noopener" data-umami-event="Publication Link" data-umami-event-paper="sbgames-2008">A Preliminary Comparison of Technologies for Implementing
                         Variability in Mobile Games</a></div>
                 <div class="v">SBGames, 2008</div>
             </div>
@@ -798,11 +800,11 @@
             <p class="pt" style="color:var(--muted); max-width:640px">Aberto a vagas de Applied AI / AI Engineer. Baseado
                 em Belo Horizonte, Brasil — disponível para remoto.</p>
             <div class="contact-grid">
-                <a href="mailto:rogerio.celestino.santos@gmail.com">✉️ rogerio.celestino.santos@gmail.com</a>
-                <a href="https://www.linkedin.com/in/rogeriocs/" target="_blank" rel="noopener">LinkedIn /rogeriocs</a>
-                <a href="https://github.com/rogerioc" target="_blank" rel="noopener">GitHub /rogerioc</a>
-                <a class="en" href="CV_Rogerio_Celestino_EN.pdf" target="_blank" rel="noopener">📄 Resume (PDF) ↗</a>
-                <a class="pt" href="CV_Rogerio_Celestino_PT.pdf" target="_blank" rel="noopener">📄 Currículo (PDF) ↗</a>
+                <a href="mailto:rogerio.celestino.santos@gmail.com" data-umami-event="Contact Link" data-umami-event-channel="email">✉️ rogerio.celestino.santos@gmail.com</a>
+                <a href="https://www.linkedin.com/in/rogeriocs/" target="_blank" rel="noopener" data-umami-event="Social Link" data-umami-event-network="linkedin" data-umami-event-location="contact">LinkedIn /rogeriocs</a>
+                <a href="https://github.com/rogerioc" target="_blank" rel="noopener" data-umami-event="Social Link" data-umami-event-network="github" data-umami-event-location="contact">GitHub /rogerioc</a>
+                <a class="en" href="CV_Rogerio_Celestino_EN.pdf" target="_blank" rel="noopener" data-umami-event="Download CV" data-umami-event-lang="en" data-umami-event-location="contact">📄 Resume (PDF) ↗</a>
+                <a class="pt" href="CV_Rogerio_Celestino_PT.pdf" target="_blank" rel="noopener" data-umami-event="Download CV" data-umami-event-lang="pt" data-umami-event-location="contact">📄 Currículo (PDF) ↗</a>
             </div>
         </div>
     </section>
